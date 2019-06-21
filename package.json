@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "to-do-app",
   "version": "1.0.0",
   "description": "a to-do-list app",
   "main": "index.js",
@@ -11,9 +11,14 @@
   "author": "Sami",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.26.0"
+  }
 }
