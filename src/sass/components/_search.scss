@@ -1,0 +1,82 @@
+.search{
+
+
+    
+    &__input{
+        margin-top: 7rem;
+        font-size: 2.3rem;
+        color: $color-primary-grey;
+        padding: 2rem 30rem .75rem 0rem;
+        border: none;
+        border-bottom: 1px solid $color-primary-grey;
+
+        &::placeholder{
+            color: $color-primary-grey;
+            opacity: .6;
+        }
+
+        &:focus{
+            outline: none;
+        }
+
+        &--box{
+            display: inline-block;
+            position: relative;
+        }
+    }
+
+    .add__to-do{
+        display: inline-block;
+        position: relative;
+        margin-left: 6rem;
+        vertical-align: text-bottom;
+        @include addItemCircle(56px, 56px);
+        background-color: $color-primary;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+        transition: all 0.2s;
+
+        &--span{
+            display: inline-block;
+            width: 100%;
+            height: auto;
+
+            i{
+                width: 55%;
+                height: auto;
+                @include plusSign(4px, $color-primary-white);
+                @include addItemIcon($color-primary-white, 3rem);
+                transform: translate(-50%,-50%);
+            }
+        }
+
+
+        &:hover{
+            background-color: transparent;
+            box-shadow: none;
+
+            i{
+                @include plusSign(4px, $color-primary);
+                @include addItemIcon($color-primary, 3rem);
+
+            }
+    
+        }
+    }
+
+
+    .highlight {
+        position: absolute;
+        bottom: 0;
+        left:50%;
+        transform-origin: left;
+        transform: translateX(-50%) scaleX(0);
+        width: 100%;
+        height:2px;
+        background-color: $color-primary;
+        transition: all 0.3s ease-in-out;
+        z-index: 11;
+    }
+    &__input:focus ~ .highlight {
+        transform: translateX(-50%) scaleX(1);
+    }
+}

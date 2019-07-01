@@ -1,0 +1,36 @@
+@mixin addItemCircle($width,$height) {
+    width: $width;
+    height: $height;
+    border-radius: 50%;
+}
+
+@mixin addItemIcon($color,$fontSize) {
+    font-size: $fontSize;
+    color: $color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
+
+@mixin plusSign($width,$color){
+    display: block;
+    margin: 0 auto;
+    position: relative;
+ 
+    &:before, 
+     &:after {
+      content: "";
+      position: absolute;
+      border-radius: 50px;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      transform: translate(-50%, -50%);
+      border-bottom: $width solid $color;
+   }
+   
+   &:before {
+      transform: translate(-50%, -50%) rotate(90deg);
+   }
+}

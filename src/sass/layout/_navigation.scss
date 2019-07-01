@@ -5,6 +5,7 @@
     padding: 4rem 5rem 5rem 3rem;
     color: $color-primary-white;
     position: relative;
+    box-shadow: 9px 5px 30px rgba(0, 0, 0, .2);
 
     &__content{
         height: 100%;
@@ -62,9 +63,7 @@
 
             .nav__add-item--icon{
                 display: inline-block;
-                width: 15px;
-                height: 15px;
-                border-radius: 50%;
+                @include addItemCircle(15px, 15px);
                 margin-right: 3px;
                 vertical-align: middle;
                 background-color: $color-primary-white;
@@ -73,11 +72,7 @@
                 transition: all 0.3s;
 
                 i{ 
-                    font-size: 1rem;
-                    color: $color-primary;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
+                    @include addItemIcon($color-primary, 1rem);
                     transform: translate(-55%,-50%);
                     transition: all 0.3s;
                 }

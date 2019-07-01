@@ -22,3 +22,18 @@ a{
     text-decoration: none;
     
 }
+
+.row{
+    max-width: 114rem;
+    margin: 0 auto;
+
+      &::after{
+          content: '';
+         display: table;
+         clear: both;
+      }
+}
+
+.container{
+    margin-right: 30%;
+}
