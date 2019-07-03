@@ -1,0 +1,113 @@
+.list{
+    span {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+
+        &:before, &:after {
+          content: '';
+          position: absolute;
+          width: 0%;
+          height: 2px;
+          top: 60%;
+          margin-top: -0.5px;
+          background: $color-primary;
+          
+        }
+        &:before {
+          left: -2.5px;
+        }
+        &:after {
+          right: 2.5px;
+          background: $color-primary;
+          transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+      }  
+      
+      
+
+    &__box{
+        margin-top: 2rem;
+    }
+
+    &__ul{
+        color: $color-primary-grey;
+        font-size: 2.2rem;
+        list-style-type: none;
+    }
+
+    &__item{
+        position: relative;
+        padding: 2rem 1.5rem;
+        border-bottom: 1px solid $color-grey-light;
+        cursor: text;
+
+        &--uncompleted{
+
+               span:before, span:after {
+               content: '';
+                width: 0%;
+               }
+              
+              span:hover:before {
+                background: $color-primary;
+                width: 100%;
+                transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+              }
+              
+              span:hover:after {
+                background: transparent;
+                width: 100%;
+                transition: 0s;
+              }
+
+              span:active:before{
+                  background: $color-primary-grey;
+              }
+
+              
+            }
+
+
+            &--completed{
+                span:before, span:after {
+                    content: '';
+                     width: 100%;
+                     background: $color-primary-grey;
+                    }
+
+                    span:hover:before {
+                        transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+                      }
+                      
+                      span:hover:after {
+                        background: transparent;
+                        transition: 0s;
+                      }
+
+                      span:active:before{
+                        width: 0%;
+                    }
+      
+            }
+            
+            &::after{
+            content: '\205D';
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+        }
+    }
+
+
+    .heading__secondary{
+        margin-top: 2rem;
+        color: $color-primary-grey;
+    }
+
+
+
+      
+}
