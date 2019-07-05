@@ -206,6 +206,31 @@ body {
   margin-top: 2rem;
   color: #707070; }
 
+.more {
+  display: none;
+  font-size: 1.3rem;
+  width: 23.5rem;
+  height: 11.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100; }
+  .more__box {
+    background: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    padding: 1rem 3rem 1rem 1rem;
+    border-radius: 14px; }
+  .more__list {
+    list-style: none;
+    cursor: pointer; }
+    .more__list--item {
+      padding: .4rem 0 .4rem .5rem; }
+      .more__list--item i {
+        margin-right: 0.5rem; }
+      .more__list--item:hover {
+        background-color: #e6e6e6;
+        border-radius: 3px; }
+
 .nav {
   display: block;
   background-color: #51A7FF;
