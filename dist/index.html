@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/fb9e288c07.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>To-Do App</title>
 </head>
+
 <body>
     <main>
         <nav class="nav">
@@ -22,14 +24,17 @@
                         <ul class="nav__projects--list">
                             <li class="nav__projects--item"><a href="#">Website Development</a></li>
                             <li class="nav__projects--item"><a href="#">Creating movie</a></li>
-                            <li class="nav__projects--add-item "><span class="nav__add-item--icon add-item--icon"><i class="fas fa-plus"></i></span> <a href="#"> Add project</a></li>
+                            <li class="nav__projects--add-item "><span class="nav__add-item--icon add-item--icon"><i
+                                        class="fas fa-plus"></i></span> <a href="#"> Add project</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="nav__bottom">
                     <ul class="nav__days">
-                        <li class="nav__days--item"><a href="#">Today &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                        <li class="nav__days--item"><a href="#">Today
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        </li>
                         <li class="nav__days--item"><a href="#">Tomorrow</a></li>
                         <li class="nav__days--item"><a href="#">Next week</a></li>
                         <li class="nav__days--item"><a href="#">Next month</a></li>
@@ -41,7 +46,8 @@
         <div class="container row">
             <section class="search">
                 <div class="search__input--box">
-                    <input type="text" name="" placeholder="&#xF002; Search" id="search-to-do" class="search__input" style="font-family:Arial, FontAwesome">
+                    <input type="text" name="" placeholder="&#xF002; Search" id="search-to-do" class="search__input"
+                        style="font-family:Arial, FontAwesome">
                     <div class="highlight"></div>
                 </div>
                 <a href="" class="add__to-do"><span class="add__to-do--span"><i class="add__to-do--plus"></i></span></a>
@@ -79,8 +85,39 @@
                 </ul>
             </div>
         </section>
+
+        <!-- ADD-TODO Section -->
+        <section class="add-todo">
+            <div class="add-todo__box">
+                <div class="add-todo__container">
+                    <div class="add-todo__input--box">
+                        <input type="text" placeholder="I want to" class="input add-todo__input" id="add-todo--input">
+                        <div class="highlight"></div>
+                    </div>
+                    <div class="row add-todo__date--section">
+                        <div class="col-1-of-2"><label for="add-todo__date" class="add-todo__label">Date</label></div>
+                        <div class="col-1-of-2"><input type="date" class="add-todo__date" name="" id="add-todo__date">
+                        </div>
+                    </div>
+
+                    <div class="row add-todo__project--section">
+                        <div class="col-1-of-2"><label for="add-todo__project" class="add-todo__label">Project</label>
+                        </div>
+                        <div class="col-1-of-2">
+                            <select class="add-todo__project" name="" id="add-todo__project">
+                                <option selected value="none">None</option>
+                                <option value="web-development">Web development</option>
+                                <option value="creating-movie">Creating Movie</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </main>
 
-<script src="./js/bundle.js"></script>
+    <script src="./js/bundle.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,67 @@
+.add-todo{
+    display: none;
+    position: absolute;
+    width: 100vw;
+    background: rgba(0, 0, 0, .8);
+    height: 100vh;
+    font-size: 2rem;
+    color: $color-grey-dark;
+    z-index: 500;
+
+    &__box{
+        position: relative;
+        margin: 0 auto;
+        transform: translateY(100%);
+        width: 50rem;
+        height: 30rem;
+        padding: 2rem 4rem;
+        background: $color-primary-white;
+        border-radius: 49px;
+    }
+
+    &__container{
+        text-align: center;
+    }
+
+    &__input{
+        margin-top: 0;
+
+        &--box{
+            margin-top: 3rem;
+            display: inline-block;
+            position: relative;
+        }
+    }
+
+    &__date{
+
+        &--section{
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid $color-grey-light;
+            text-align: left;
+        }
+    }
+
+    &__project{
+
+        &--section{
+            text-align: left;
+
+            select{
+                font-size: 2rem;
+                width: auto;
+                color: $color-primary-grey;
+                border: none;
+                border-bottom: 2px solid $color-primary-grey;
+
+                option{
+                    border-bottom: 1px solid $color-primary-grey;
+                    padding: 4rem;
+                }
+            }
+        }
+
+    }
+    
+}
