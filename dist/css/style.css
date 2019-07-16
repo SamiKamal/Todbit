@@ -6,13 +6,39 @@
   box-sizing: inherit; }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  width: 100%; }
 
 html {
   font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
 
 main {
-  display: flex; }
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: 300ms ease all;
+  transition: 300ms ease all;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+.show-nav main {
+  -webkit-transform: translateX(362.81px);
+  transform: translateX(362.81px);
+  -webkit-transform: translate3d(362.81px, 0, 0);
+  transform: translate3d(362.81px, 0, 0); }
 
 a {
   text-decoration: none; }
@@ -24,6 +50,16 @@ a {
     content: '';
     display: table;
     clear: both; }
+
+.row-mid {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row-mid::after {
+    content: '';
+    display: table;
+    clear: both; }
+  .row-mid:not(:last-child) {
+    margin-bottom: 4rem; }
 
 .container {
   margin-right: 30%; }
@@ -282,8 +318,15 @@ input:focus ~ .highlight {
   height: 100vh;
   padding: 4rem 5rem 5rem 3rem;
   color: #fff;
-  position: relative;
   box-shadow: 9px 5px 30px rgba(0, 0, 0, 0.2); }
+  @media only screen and (max-width: 75em) {
+    .nav {
+      position: absolute;
+      top: 0;
+      left: -362.81px; }
+      .nav .pull-nav {
+        display: block !important;
+        transform: translateX(300px); } }
   .nav__content {
     height: 100%; }
   .nav .nav__projects {
@@ -355,6 +398,71 @@ input:focus ~ .highlight {
           font-size: 3rem;
           font-weight: 700;
           color: inherit; }
+
+.main-head__nav {
+  display: none;
+  position: relative; }
+  @media only screen and (max-width: 75em) {
+    .main-head__nav {
+      display: block; } }
+
+.nav-toggle {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  z-index: 50;
+  top: 1em;
+  left: 3em;
+  width: 4.4em;
+  height: 4.4em; }
+  .nav-toggle div {
+    position: absolute;
+    top: 30%;
+    left: -4em;
+    color: #51A7FF;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    text-transform: uppercase; }
+    .nav-toggle div:after {
+      opacity: 1;
+      transition: opacity 300ms; }
+    .nav-toggle div:before {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 300ms; }
+  .nav-toggle span,
+  .nav-toggle span:after,
+  .nav-toggle span:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: .5em;
+    top: 2em;
+    left: 0;
+    right: 0;
+    border-radius: .5em;
+    background-color: #51A7FF;
+    transition: transform 300ms, background-color 100ms; }
+  .nav-toggle span:after, .nav-toggle span:before {
+    transition: 400ms;
+    transform-origin: .5em; }
+  .nav-toggle span:after {
+    top: 1.1em; }
+  .nav-toggle span:before {
+    top: -1.1em; }
+  .nav-toggle.active div:after {
+    opacity: 0; }
+  .nav-toggle.active div:before {
+    opacity: 1; }
+  .nav-toggle.active span {
+    transform: rotate(90deg) translate(0.2em, 0);
+    background-color: transparent; }
+    .nav-toggle.active span:after, .nav-toggle.active span:before {
+      background-color: white; }
+    .nav-toggle.active span:before {
+      transform: rotate(45deg); }
+    .nav-toggle.active span:after {
+      transform: rotate(-45deg); }
 
 .row {
   max-width: 114rem;

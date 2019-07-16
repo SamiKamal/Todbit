@@ -1,24 +1,37 @@
-.nav{
+.nav {
     display: block;
     background-color: $color-primary;
     height: 100vh;
     padding: 4rem 5rem 5rem 3rem;
     color: $color-primary-white;
-    position: relative;
+    // position: relative;
     box-shadow: 9px 5px 30px rgba(0, 0, 0, .2);
+    // transform: translateX(-300px);
 
-    &__content{
+    @include responsive(tab-land) {
+        position: absolute;
+        top: 0;
+        left: -362.81px;  
+    
+        .pull-nav{
+            display: block !important;
+            transform: translateX(300px);
+        }
+    }
+
+    &__content {
         height: 100%;
     }
+
     // top
-    .nav__projects{
+    .nav__projects {
         margin-top: 5rem;
     }
 
-    .nav__projects--list{
+    .nav__projects--list {
         // margin-left: 1.5rem;
 
-        .nav__projects--item{
+        .nav__projects--item {
             font-size: 2.2rem;
             list-style: none;
             padding: 1rem;
@@ -27,17 +40,17 @@
             transition: all 0.3s;
             cursor: pointer;
 
-            &:hover{
+            &:hover {
                 background-color: darken($color-primary, 5);
             }
 
-            a{
-             color: inherit;
-             text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+            a {
+                color: inherit;
+                text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
             }
         }
 
-        .nav__projects--add-item{
+        .nav__projects--add-item {
             display: inline-block;
             list-style: none;
             font-size: 1.5rem;
@@ -45,23 +58,23 @@
             position: relative;
             cursor: pointer;
 
-            a{
+            a {
                 color: #CFE7FF;
                 vertical-align: middle;
                 text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
 
             }
 
-            &:hover  .nav__add-item--icon{
+            &:hover .nav__add-item--icon {
                 background-color: transparent;
                 box-shadow: initial;
 
-                i{
+                i {
                     color: $color-primary-white;
                 }
             }
 
-            .nav__add-item--icon{
+            .nav__add-item--icon {
                 display: inline-block;
                 @include addItemCircle(15px, 15px);
                 margin-right: 3px;
@@ -71,9 +84,9 @@
                 box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
                 transition: all 0.3s;
 
-                i{ 
+                i {
                     @include addItemIcon($color-primary, 1rem);
-                    transform: translate(-55%,-50%);
+                    transform: translate(-55%, -50%);
                     transition: all 0.3s;
                 }
             }
@@ -82,26 +95,27 @@
 
 
     // bottom 
-    &__bottom{
+    &__bottom {
         position: absolute;
         bottom: 4rem;
-        .nav__days{
+
+        .nav__days {
             display: block;
             list-style: none;
             width: 100%;
 
-            &--item{
+            &--item {
                 display: block;
                 padding: 1rem;
                 border-radius: 4px;
                 border-bottom: 1px solid rgba(226, 226, 226, 0.233);
                 transition: all 0.3s;
-    
-                &:hover{
+
+                &:hover {
                     background-color: darken($color-primary, 5);
                 }
 
-                a{
+                a {
                     font-size: 3rem;
                     font-weight: 700;
                     color: inherit;
@@ -109,6 +123,113 @@
             }
         }
     }
+
+
+
+
 }
 
 
+// responsive menu
+.main-head__nav {
+    display: none;
+    position: relative;
+
+    @include responsive(tab-land){
+        display: block;
+    }
+}
+
+.nav-toggle {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    z-index: 50;
+    top: 1em;
+    left: 3em;
+    width: 4.4em;
+    height: 4.4em;
+
+    div {
+        position: absolute;
+        top: 30%;
+        left: -4em;
+        color: $color-primary;
+        font-family: "Open Sans", sans-serif;
+        font-size: 20px;
+        text-transform: uppercase;
+
+        &:after {
+            opacity: 1;
+            transition: opacity 300ms;
+        }
+
+        &:before {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 300ms;
+        }
+    }
+
+    span,
+    span:after,
+    span:before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: .5em;
+        top: 2em;
+        left: 0;
+        right: 0;
+        border-radius: .5em;
+        background-color: $color-primary;
+        transition: transform 300ms, background-color 100ms;
+    }
+
+    span {
+
+        &:after,
+        &:before {
+            transition: 400ms;
+            transform-origin: .5em;
+        }
+
+        &:after {
+            top: 1.1em;
+        }
+
+        &:before {
+            top: -1.1em;
+        }
+    }
+
+    &.active {
+        div {
+            &:after {
+                opacity: 0;
+            }
+
+            &:before {
+                opacity: 1;
+            }
+        }
+
+        span {
+            transform: rotate(90deg) translate(0.2em, 0);
+            background-color: transparent;
+
+            &:after,
+            &:before {
+                background-color: white;
+            }
+
+            &:before {
+                transform: rotate(45deg);
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
