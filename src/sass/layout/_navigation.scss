@@ -87,7 +87,7 @@
 
                 i {
                     @include addItemIcon($color-primary, 1rem);
-                    transform: translate(-55%, -50%);
+                    transform: translate(-50%, -50%);
                     transition: all 0.3s;
                 }
             }
