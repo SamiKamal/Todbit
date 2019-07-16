@@ -8,8 +8,10 @@
 body{
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
     width: 100%;
+
+    
 }
 
 html{
@@ -26,6 +28,7 @@ html{
     @include responsive(tab-port){
         font-size: 50%;
     }
+
 
 
 }
@@ -77,6 +80,16 @@ a{
 .row-mid{
     max-width: $grid-width;
     margin: 0 auto;
+
+    @include responsive(phone){
+        width: 100vw;
+    }
+
+    @include responsive(phone){
+        padding: 3rem;
+    }
+
+
 
       &::after{
           content: '';

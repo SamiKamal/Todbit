@@ -6,6 +6,10 @@
         margin-top: 7rem;
         padding: 2rem 30rem .75rem 0rem;
 
+        @include responsive(phone){
+            padding-right: 0;
+        }
+
         &--box{
             display: inline-block;
             position: relative;
@@ -21,6 +25,19 @@
         background-color: $color-primary;
         box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
         transition: all 0.2s;
+        
+
+        @include responsive(phone){
+            position: fixed;
+            top: 88vh;
+            margin: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 -6px 20px rgba(0, 0, 0, .3);
+            @include addItemCircle(111px, 111px);
+            z-index: 30;
+
+        }
 
         &--span{
             display: inline-block;
@@ -33,6 +50,14 @@
                 @include plusSign(4px, $color-primary-white);
                 @include addItemIcon($color-primary-white, 3rem);
                 transform: translate(-50%,-50%);
+
+                @include responsive(phone){
+                    width: 75%;
+                    @include plusSign(8px, $color-primary-white);
+                    @include addItemIcon($color-primary-white, 3rem);
+                    text-align: center;
+
+                }
             }
         }
 
@@ -41,9 +66,25 @@
             background-color: transparent;
             box-shadow: none;
 
+            @include responsive(phone){
+                &:hover{
+                    background-color: $color-primary;
+                    box-shadow: 0 -4px 5px rgba(0, 0, 0, .2);
+        
+                }
+    
+            }
+            
+
             i{
                 @include plusSign(4px, $color-primary);
                 @include addItemIcon($color-primary, 3rem);
+
+                @include responsive(phone){
+                    @include plusSign(8px, $color-primary-white);
+                    @include addItemIcon($color-primary-white, 3rem);
+
+                }
 
             }
     

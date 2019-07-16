@@ -6,15 +6,20 @@ document.getElementById('nav-toggle').addEventListener('click', (e) => {
 
 function toggleNav() {
     if (document.querySelector('body').classList.contains('show-nav')){
-        document.querySelector('body').classList.remove('show-nav')
-        document.querySelector('nav').classList.remove('pull-nav')
+        document.querySelector('body').classList.remove('show-nav');
+        document.querySelector('nav').classList.remove('pull-nav');
+        document.querySelector('body').style.overflowY = 'initial'
+
         // document.querySelector('nav').style.display = 'none'
         
     
 } else {
     document.querySelector('body').classList.add('show-nav')
+    document.querySelector('body').style.overflowY = 'hidden'
+
     // document.querySelector('nav').classList.add('pull-nav')
-    // document.querySelector('nav').style.display = 'block'
+    // document.querySelector('nav').style.display = 'block' 
 
 }
 }
+

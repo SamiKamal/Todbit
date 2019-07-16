@@ -8,7 +8,7 @@
 body {
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100%; }
 
 html {
@@ -54,6 +54,12 @@ a {
 .row-mid {
   max-width: 114rem;
   margin: 0 auto; }
+  @media only screen and (max-width: 37.5em) {
+    .row-mid {
+      width: 100vw; } }
+  @media only screen and (max-width: 37.5em) {
+    .row-mid {
+      padding: 3rem; } }
   .row-mid::after {
     content: '';
     display: table;
@@ -111,6 +117,9 @@ input:focus ~ .highlight {
 .search__input {
   margin-top: 7rem;
   padding: 2rem 30rem .75rem 0rem; }
+  @media only screen and (max-width: 37.5em) {
+    .search__input {
+      padding-right: 0; } }
   .search__input--box {
     display: inline-block;
     position: relative; }
@@ -126,6 +135,18 @@ input:focus ~ .highlight {
   background-color: #51A7FF;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   transition: all 0.2s; }
+  @media only screen and (max-width: 37.5em) {
+    .search .add__to-do {
+      position: fixed;
+      top: 88vh;
+      margin: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
+      width: 111px;
+      height: 111px;
+      border-radius: 50%;
+      z-index: 30; } }
   .search .add__to-do--span {
     display: inline-block;
     width: 100%;
@@ -153,9 +174,36 @@ input:focus ~ .highlight {
         border-bottom: 4px solid #fff; }
       .search .add__to-do--span i:before {
         transform: translate(-50%, -50%) rotate(90deg); }
+      @media only screen and (max-width: 37.5em) {
+        .search .add__to-do--span i {
+          width: 75%;
+          display: block;
+          margin: 0 auto;
+          position: relative;
+          font-size: 3rem;
+          color: #fff;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          text-align: center; }
+          .search .add__to-do--span i:before, .search .add__to-do--span i:after {
+            content: "";
+            position: absolute;
+            border-radius: 50px;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            transform: translate(-50%, -50%);
+            border-bottom: 8px solid #fff; }
+          .search .add__to-do--span i:before {
+            transform: translate(-50%, -50%) rotate(90deg); } }
   .search .add__to-do:hover {
     background-color: transparent;
     box-shadow: none; }
+    @media only screen and (max-width: 37.5em) {
+      .search .add__to-do:hover:hover {
+        background-color: #51A7FF;
+        box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.2); } }
     .search .add__to-do:hover i {
       display: block;
       margin: 0 auto;
@@ -176,6 +224,27 @@ input:focus ~ .highlight {
         border-bottom: 4px solid #51A7FF; }
       .search .add__to-do:hover i:before {
         transform: translate(-50%, -50%) rotate(90deg); }
+      @media only screen and (max-width: 37.5em) {
+        .search .add__to-do:hover i {
+          display: block;
+          margin: 0 auto;
+          position: relative;
+          font-size: 3rem;
+          color: #fff;
+          position: absolute;
+          top: 50%;
+          left: 50%; }
+          .search .add__to-do:hover i:before, .search .add__to-do:hover i:after {
+            content: "";
+            position: absolute;
+            border-radius: 50px;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            transform: translate(-50%, -50%);
+            border-bottom: 8px solid #fff; }
+          .search .add__to-do:hover i:before {
+            transform: translate(-50%, -50%) rotate(90deg); } }
 
 .list span {
   position: relative;
@@ -318,6 +387,8 @@ input:focus ~ .highlight {
   height: 100vh;
   padding: 4rem 5rem 5rem 3rem;
   color: #fff;
+  position: sticky;
+  top: 0;
   box-shadow: 9px 5px 30px rgba(0, 0, 0, 0.2); }
   @media only screen and (max-width: 75em) {
     .nav {

@@ -29,6 +29,10 @@
 
     &__box{
         margin-top: 2rem;
+
+        // @include responsive(phone){
+        //   width: 100vw;
+        // }
     }
 
     &__ul{

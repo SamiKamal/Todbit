@@ -4,7 +4,8 @@
     height: 100vh;
     padding: 4rem 5rem 5rem 3rem;
     color: $color-primary-white;
-    // position: relative;
+    position: sticky;
+    top: 0;
     box-shadow: 9px 5px 30px rgba(0, 0, 0, .2);
     // transform: translateX(-300px);
 
