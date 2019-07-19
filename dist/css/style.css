@@ -34,11 +34,28 @@ main {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden; }
 
+.add__to-do {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: 300ms ease all;
+  transition: 300ms ease all;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
 .show-nav main {
   -webkit-transform: translateX(362.81px);
   transform: translateX(362.81px);
   -webkit-transform: translate3d(362.81px, 0, 0);
   transform: translate3d(362.81px, 0, 0); }
+
+@media only screen and (max-width: 37.5em) {
+  .show-nav .add__to-do {
+    -webkit-transform: translateX(362.81px);
+    transform: translateX(362.81px);
+    -webkit-transform: translate3d(362.81px, 0, 0);
+    transform: translate3d(362.81px, 0, 0); } }
 
 a {
   text-decoration: none; }
@@ -124,7 +141,7 @@ input:focus ~ .highlight {
     display: inline-block;
     position: relative; }
 
-.search .add__to-do {
+.add__to-do {
   display: inline-block;
   position: relative;
   margin-left: 6rem;
@@ -136,9 +153,10 @@ input:focus ~ .highlight {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   transition: all 0.2s; }
   @media only screen and (max-width: 37.5em) {
-    .search .add__to-do {
-      position: fixed;
-      top: 88vh;
+    .add__to-do {
+      display: flex;
+      position: sticky;
+      bottom: 1rem;
       margin: 0;
       left: 50%;
       transform: translateX(-50%);
@@ -147,11 +165,11 @@ input:focus ~ .highlight {
       height: 111px;
       border-radius: 50%;
       z-index: 30; } }
-  .search .add__to-do--span {
+  .add__to-do--span {
     display: inline-block;
     width: 100%;
     height: auto; }
-    .search .add__to-do--span i {
+    .add__to-do--span i {
       width: 55%;
       height: auto;
       display: block;
@@ -163,7 +181,7 @@ input:focus ~ .highlight {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); }
-      .search .add__to-do--span i:before, .search .add__to-do--span i:after {
+      .add__to-do--span i:before, .add__to-do--span i:after {
         content: "";
         position: absolute;
         border-radius: 50px;
@@ -172,10 +190,10 @@ input:focus ~ .highlight {
         width: 90%;
         transform: translate(-50%, -50%);
         border-bottom: 4px solid #fff; }
-      .search .add__to-do--span i:before {
+      .add__to-do--span i:before {
         transform: translate(-50%, -50%) rotate(90deg); }
       @media only screen and (max-width: 37.5em) {
-        .search .add__to-do--span i {
+        .add__to-do--span i {
           width: 75%;
           display: block;
           margin: 0 auto;
@@ -186,7 +204,7 @@ input:focus ~ .highlight {
           top: 50%;
           left: 50%;
           text-align: center; }
-          .search .add__to-do--span i:before, .search .add__to-do--span i:after {
+          .add__to-do--span i:before, .add__to-do--span i:after {
             content: "";
             position: absolute;
             border-radius: 50px;
@@ -195,16 +213,16 @@ input:focus ~ .highlight {
             width: 90%;
             transform: translate(-50%, -50%);
             border-bottom: 8px solid #fff; }
-          .search .add__to-do--span i:before {
+          .add__to-do--span i:before {
             transform: translate(-50%, -50%) rotate(90deg); } }
-  .search .add__to-do:hover {
+  .add__to-do:hover {
     background-color: transparent;
     box-shadow: none; }
     @media only screen and (max-width: 37.5em) {
-      .search .add__to-do:hover:hover {
+      .add__to-do:hover:hover {
         background-color: #51A7FF;
         box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.2); } }
-    .search .add__to-do:hover i {
+    .add__to-do:hover i {
       display: block;
       margin: 0 auto;
       position: relative;
@@ -213,7 +231,7 @@ input:focus ~ .highlight {
       position: absolute;
       top: 50%;
       left: 50%; }
-      .search .add__to-do:hover i:before, .search .add__to-do:hover i:after {
+      .add__to-do:hover i:before, .add__to-do:hover i:after {
         content: "";
         position: absolute;
         border-radius: 50px;
@@ -222,10 +240,10 @@ input:focus ~ .highlight {
         width: 90%;
         transform: translate(-50%, -50%);
         border-bottom: 4px solid #51A7FF; }
-      .search .add__to-do:hover i:before {
+      .add__to-do:hover i:before {
         transform: translate(-50%, -50%) rotate(90deg); }
       @media only screen and (max-width: 37.5em) {
-        .search .add__to-do:hover i {
+        .add__to-do:hover i {
           display: block;
           margin: 0 auto;
           position: relative;
@@ -234,7 +252,7 @@ input:focus ~ .highlight {
           position: absolute;
           top: 50%;
           left: 50%; }
-          .search .add__to-do:hover i:before, .search .add__to-do:hover i:after {
+          .add__to-do:hover i:before, .add__to-do:hover i:after {
             content: "";
             position: absolute;
             border-radius: 50px;
@@ -243,7 +261,7 @@ input:focus ~ .highlight {
             width: 90%;
             transform: translate(-50%, -50%);
             border-bottom: 8px solid #fff; }
-          .search .add__to-do:hover i:before {
+          .add__to-do:hover i:before {
             transform: translate(-50%, -50%) rotate(90deg); } }
 
 .list span {

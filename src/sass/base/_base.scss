@@ -53,6 +53,23 @@ main{
   
   
 }
+.add__to-do{
+    
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    
+    -webkit-transition: 300ms ease all;
+    transition: 300ms ease all;
+   
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  
+  
+}
+
 .show-nav main {
     -webkit-transform: translateX(362.81px);
     transform: translateX(362.81px);
@@ -60,6 +77,18 @@ main{
     -webkit-transform: translate3d(362.81px, 0, 0);
     transform: translate3d(362.81px, 0, 0);
   }
+
+  .show-nav .add__to-do {
+      @include responsive(phone){
+        -webkit-transform: translateX(362.81px);
+        transform: translateX(362.81px);
+        
+        -webkit-transform: translate3d(362.81px, 0, 0);
+        transform: translate3d(362.81px, 0, 0);
+    
+      }
+  }
+
 
 a{
     text-decoration: none;

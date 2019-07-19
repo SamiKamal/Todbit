@@ -1,8 +1,24 @@
+let addTodoEl = document.querySelector('.add__to-do');
+let searchParent = document.querySelector('.search');
+
 document.getElementById('nav-toggle').addEventListener('click', (e) => {
     document.getElementById('nav-toggle').classList.toggle('active');
 
     toggleNav();
 })
+
+window.addEventListener('resize', (e) => {
+    if (getWidth() > 583){
+        searchParent.insertAdjacentElement("beforeend", addTodoEl)
+    } else {
+        document.querySelector('body').insertAdjacentElement('beforeend', addTodoEl)
+    }
+    console.log('Width:  ' +  getWidth() );
+    console.log('Height: ' + getHeight() );
+  
+})
+
+
 
 function toggleNav() {
     if (document.querySelector('body').classList.contains('show-nav')){
@@ -23,3 +39,24 @@ function toggleNav() {
 }
 }
 
+function getWidth() {
+    return Math.max(
+      document.body.scrollWidth,
+      document.documentElement.scrollWidth,
+      document.body.offsetWidth,
+      document.documentElement.offsetWidth,
+      document.documentElement.clientWidth
+    );
+  }
+  
+  function getHeight() {
+    return Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.documentElement.clientHeight
+    );
+  }
+  
+  
