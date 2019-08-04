@@ -3,10 +3,12 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit; }
 
 body {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   position: relative;
   overflow-x: hidden;
   width: 100%; }
@@ -21,6 +23,8 @@ html {
       font-size: 50%; } }
 
 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 100%;
   width: 100%;
@@ -100,6 +104,15 @@ input {
   color: #707070;
   border: none;
   border-bottom: 1px solid #707070; }
+  input::-webkit-input-placeholder {
+    color: #707070;
+    opacity: .6; }
+  input:-ms-input-placeholder {
+    color: #707070;
+    opacity: .6; }
+  input::-ms-input-placeholder {
+    color: #707070;
+    opacity: .6; }
   input::placeholder {
     color: #707070;
     opacity: .6; }
@@ -110,7 +123,8 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 .heading__primary {
   font-size: 6.3rem;
@@ -128,16 +142,20 @@ body {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform-origin: left;
-  transform: translateX(-50%) scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: translateX(-50%) scaleX(0);
+          transform: translateX(-50%) scaleX(0);
   width: 100%;
   height: 2px;
   background-color: #51A7FF;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   z-index: 11; }
 
 input:focus ~ .highlight {
-  transform: translateX(-50%) scaleX(1); }
+  -webkit-transform: translateX(-50%) scaleX(1);
+          transform: translateX(-50%) scaleX(1); }
 
 .search__input {
   margin-top: 7rem;
@@ -158,17 +176,24 @@ input:focus ~ .highlight {
   height: 56px;
   border-radius: 50%;
   background-color: #51A7FF;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.2s;
   transition: all 0.2s; }
   @media only screen and (max-width: 37.5em) {
     .add__to-do {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      position: -webkit-sticky;
       position: sticky;
       bottom: 1rem;
       margin: 0;
       left: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      -webkit-box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
+              box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
       width: 111px;
       height: 111px;
       border-radius: 50%; } }
@@ -187,7 +212,8 @@ input:focus ~ .highlight {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); }
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
       .add__to-do--span i:before, .add__to-do--span i:after {
         content: "";
         position: absolute;
@@ -195,10 +221,12 @@ input:focus ~ .highlight {
         top: 50%;
         left: 50%;
         width: 90%;
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
         border-bottom: 4px solid #fff; }
       .add__to-do--span i:before {
-        transform: translate(-50%, -50%) rotate(90deg); }
+        -webkit-transform: translate(-50%, -50%) rotate(90deg);
+                transform: translate(-50%, -50%) rotate(90deg); }
       @media only screen and (max-width: 37.5em) {
         .add__to-do--span i {
           width: 75%;
@@ -218,17 +246,21 @@ input:focus ~ .highlight {
             top: 50%;
             left: 50%;
             width: 90%;
-            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
             border-bottom: 8px solid #fff; }
           .add__to-do--span i:before {
-            transform: translate(-50%, -50%) rotate(90deg); } }
+            -webkit-transform: translate(-50%, -50%) rotate(90deg);
+                    transform: translate(-50%, -50%) rotate(90deg); } }
   .add__to-do:hover {
     background-color: transparent;
-    box-shadow: none; }
+    -webkit-box-shadow: none;
+            box-shadow: none; }
     @media only screen and (max-width: 37.5em) {
       .add__to-do:hover:hover {
         background-color: #51A7FF;
-        box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.2); } }
+        -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.2); } }
     .add__to-do:hover i {
       display: block;
       margin: 0 auto;
@@ -245,10 +277,12 @@ input:focus ~ .highlight {
         top: 50%;
         left: 50%;
         width: 90%;
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
         border-bottom: 4px solid #51A7FF; }
       .add__to-do:hover i:before {
-        transform: translate(-50%, -50%) rotate(90deg); }
+        -webkit-transform: translate(-50%, -50%) rotate(90deg);
+                transform: translate(-50%, -50%) rotate(90deg); }
       @media only screen and (max-width: 37.5em) {
         .add__to-do:hover i {
           display: block;
@@ -266,10 +300,12 @@ input:focus ~ .highlight {
             top: 50%;
             left: 50%;
             width: 90%;
-            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
             border-bottom: 8px solid #fff; }
           .add__to-do:hover i:before {
-            transform: translate(-50%, -50%) rotate(90deg); } }
+            -webkit-transform: translate(-50%, -50%) rotate(90deg);
+                    transform: translate(-50%, -50%) rotate(90deg); } }
 
 .list span {
   position: relative;
@@ -288,6 +324,7 @@ input:focus ~ .highlight {
   .list span:after {
     right: 2.5px;
     background: #51A7FF;
+    -webkit-transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
     transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); }
 
 .list__box {
@@ -309,10 +346,12 @@ input:focus ~ .highlight {
   .list__item--uncompleted span:hover:before {
     background: #51A7FF;
     width: 100%;
+    -webkit-transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
     transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1); }
   .list__item--uncompleted span:hover:after {
     background: transparent;
     width: 100%;
+    -webkit-transition: 0s;
     transition: 0s; }
   .list__item--uncompleted span:active:before {
     background: #707070; }
@@ -321,9 +360,11 @@ input:focus ~ .highlight {
     width: 100%;
     background: #707070; }
   .list__item--completed span:hover:before {
+    -webkit-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
     transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1); }
   .list__item--completed span:hover:after {
     background: transparent;
+    -webkit-transition: 0s;
     transition: 0s; }
   .list__item--completed span:active:before {
     width: 0%; }
@@ -349,7 +390,8 @@ input:focus ~ .highlight {
   z-index: 100; }
   .more__box {
     background: #fff;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
     padding: 1rem 3rem 1rem 1rem;
     border-radius: 14px; }
   .more__list {
@@ -376,7 +418,8 @@ input:focus ~ .highlight {
   .add-todo__box {
     position: relative;
     margin: 0 auto;
-    transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
     width: 50rem;
     height: 30rem;
     padding: 2rem 4rem;
@@ -422,9 +465,11 @@ input:focus ~ .highlight {
   height: 100vh;
   padding: 4rem 5rem 5rem 3rem;
   color: #fff;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
-  box-shadow: 9px 5px 30px rgba(0, 0, 0, 0.2); }
+  -webkit-box-shadow: 9px 5px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 9px 5px 30px rgba(0, 0, 0, 0.2); }
   @media only screen and (max-width: 75em) {
     .nav {
       position: absolute;
@@ -432,7 +477,8 @@ input:focus ~ .highlight {
       left: -362.81px; }
       .nav .pull-nav {
         display: block !important;
-        transform: translateX(300px); } }
+        -webkit-transform: translateX(300px);
+                transform: translateX(300px); } }
   .nav__content {
     height: 100%; }
   .nav .nav__projects {
@@ -446,6 +492,7 @@ input:focus ~ .highlight {
     padding: 1rem;
     border-radius: 4px;
     border-bottom: 1px solid rgba(226, 226, 226, 0.233);
+    -webkit-transition: all 0.3s;
     transition: all 0.3s;
     cursor: pointer; }
     .nav .nav__projects--list .nav__projects--item:hover {
@@ -466,7 +513,8 @@ input:focus ~ .highlight {
       text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2); }
     .nav .nav__projects--list .nav__projects--add-item:hover .nav__add-item--icon {
       background-color: transparent;
-      box-shadow: initial; }
+      -webkit-box-shadow: initial;
+              box-shadow: initial; }
       .nav .nav__projects--list .nav__projects--add-item:hover .nav__add-item--icon i {
         color: #fff; }
     .nav .nav__projects--list .nav__projects--add-item .nav__add-item--icon {
@@ -478,7 +526,9 @@ input:focus ~ .highlight {
       vertical-align: middle;
       background-color: #fff;
       position: relative;
-      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+              box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+      -webkit-transition: all 0.3s;
       transition: all 0.3s; }
       .nav .nav__projects--list .nav__projects--add-item .nav__add-item--icon i {
         font-size: 1rem;
@@ -486,7 +536,9 @@ input:focus ~ .highlight {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        -webkit-transition: all 0.3s;
         transition: all 0.3s; }
   .nav__bottom {
     display: block;
@@ -500,6 +552,7 @@ input:focus ~ .highlight {
         padding: 1rem;
         border-radius: 4px;
         border-bottom: 1px solid rgba(226, 226, 226, 0.233);
+        -webkit-transition: all 0.3s;
         transition: all 0.3s; }
         .nav__bottom .nav__days--item:hover {
           background-color: #389aff; }
@@ -534,10 +587,12 @@ input:focus ~ .highlight {
     text-transform: uppercase; }
     .nav-toggle div:after {
       opacity: 1;
+      -webkit-transition: opacity 300ms;
       transition: opacity 300ms; }
     .nav-toggle div:before {
       position: absolute;
       opacity: 0;
+      -webkit-transition: opacity 300ms;
       transition: opacity 300ms; }
   .nav-toggle span,
   .nav-toggle span:after,
@@ -551,10 +606,15 @@ input:focus ~ .highlight {
     right: 0;
     border-radius: .5em;
     background-color: #51A7FF;
-    transition: transform 300ms, background-color 100ms; }
+    -webkit-transition: background-color 100ms, -webkit-transform 300ms;
+    transition: background-color 100ms, -webkit-transform 300ms;
+    transition: transform 300ms, background-color 100ms;
+    transition: transform 300ms, background-color 100ms, -webkit-transform 300ms; }
   .nav-toggle span:after, .nav-toggle span:before {
+    -webkit-transition: 400ms;
     transition: 400ms;
-    transform-origin: .5em; }
+    -webkit-transform-origin: .5em;
+            transform-origin: .5em; }
   .nav-toggle span:after {
     top: 1.1em; }
   .nav-toggle span:before {
@@ -564,14 +624,17 @@ input:focus ~ .highlight {
   .nav-toggle.active div:before {
     opacity: 1; }
   .nav-toggle.active span {
-    transform: rotate(90deg) translate(0.2em, 0);
+    -webkit-transform: rotate(90deg) translate(0.2em, 0);
+            transform: rotate(90deg) translate(0.2em, 0);
     background-color: transparent; }
     .nav-toggle.active span:after, .nav-toggle.active span:before {
       background-color: white; }
     .nav-toggle.active span:before {
-      transform: rotate(45deg); }
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg); }
     .nav-toggle.active span:after {
-      transform: rotate(-45deg); }
+      -webkit-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
 
 .row {
   max-width: 114rem;
