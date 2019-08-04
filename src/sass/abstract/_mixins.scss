@@ -36,6 +36,9 @@
 }
 
 @mixin responsive($breakpoint){
+    @if $breakpoint == small-phone {
+        @media only screen and (max-width: 25em){ @content }; //400px
+    }
     @if $breakpoint == phone {
         @media only screen and (max-width: 37.5em){ @content }; //600px
     }
@@ -47,6 +50,9 @@
     }
     @if $breakpoint == med-desk {
         @media only screen and  (max-width: 93.75em){ @content }; // 1500px
+    }
+    @if $breakpoint == small-height {
+        @media only screen and  (max-height: 36.875em){ @content }; // 590px
     }
     // @if $breakpoint == big-desktop {
     //     @media only screen and  (min-width: 112.5em){ @content }; // 1800px

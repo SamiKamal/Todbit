@@ -1,4 +1,5 @@
 .nav {
+    overflow: auto;
     display: block;
     background-color: $color-primary;
     height: 100vh;
@@ -27,6 +28,10 @@
     // top
     .nav__projects {
         margin-top: 5rem;
+
+        @include responsive(small-height){
+            margin-top: 1rem;
+        }
     }
 
     .nav__projects--list {
@@ -97,9 +102,8 @@
 
     // bottom 
     &__bottom {
-        position: absolute;
-        bottom: 4rem;
-
+        display: block;
+        margin-top: 5rem;
         .nav__days {
             display: block;
             list-style: none;
@@ -145,7 +149,7 @@
     cursor: pointer;
     display: block;
     position: absolute;
-    z-index: 50;
+    z-index: 1;
     top: 1em;
     left: 3em;
     width: 4.4em;

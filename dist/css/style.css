@@ -68,6 +68,14 @@ a {
     display: table;
     clear: both; }
 
+.row-nonresponsive {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row-nonresponsive::after {
+    content: '';
+    display: table;
+    clear: both; }
+
 .row-mid {
   max-width: 114rem;
   margin: 0 auto; }
@@ -163,8 +171,7 @@ input:focus ~ .highlight {
       box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
       width: 111px;
       height: 111px;
-      border-radius: 50%;
-      z-index: 30; } }
+      border-radius: 50%; } }
   .add__to-do--span {
     display: inline-block;
     width: 100%;
@@ -358,7 +365,8 @@ input:focus ~ .highlight {
 
 .add-todo {
   display: none;
-  position: absolute;
+  position: fixed;
+  overflow: hidden;
   width: 100vw;
   background: rgba(0, 0, 0, 0.8);
   height: 100vh;
@@ -374,6 +382,10 @@ input:focus ~ .highlight {
     padding: 2rem 4rem;
     background: #fff;
     border-radius: 49px; }
+    @media only screen and (max-width: 25em) {
+      .add-todo__box {
+        width: 40rem;
+        padding: 1rem 2.5rem; } }
   .add-todo__container {
     text-align: center; }
   .add-todo__input {
@@ -382,11 +394,15 @@ input:focus ~ .highlight {
       margin-top: 3rem;
       display: inline-block;
       position: relative; }
-  .add-todo__date--section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid #D5D5D5;
-    text-align: left; }
+  .add-todo__date {
+    margin-left: 20px; }
+    .add-todo__date--section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #D5D5D5;
+      text-align: left; }
+  .add-todo__project:focus {
+    outline: none; }
   .add-todo__project--section {
     text-align: left; }
     .add-todo__project--section select {
@@ -400,6 +416,7 @@ input:focus ~ .highlight {
         padding: 4rem; }
 
 .nav {
+  overflow: auto;
   display: block;
   background-color: #51A7FF;
   height: 100vh;
@@ -420,6 +437,9 @@ input:focus ~ .highlight {
     height: 100%; }
   .nav .nav__projects {
     margin-top: 5rem; }
+    @media only screen and (max-height: 36.875em) {
+      .nav .nav__projects {
+        margin-top: 1rem; } }
   .nav .nav__projects--list .nav__projects--item {
     font-size: 2.2rem;
     list-style: none;
@@ -469,8 +489,8 @@ input:focus ~ .highlight {
         transform: translate(-50%, -50%);
         transition: all 0.3s; }
   .nav__bottom {
-    position: absolute;
-    bottom: 4rem; }
+    display: block;
+    margin-top: 5rem; }
     .nav__bottom .nav__days {
       display: block;
       list-style: none;
@@ -499,7 +519,7 @@ input:focus ~ .highlight {
   cursor: pointer;
   display: block;
   position: absolute;
-  z-index: 50;
+  z-index: 1;
   top: 1em;
   left: 3em;
   width: 4.4em;
@@ -565,16 +585,29 @@ input:focus ~ .highlight {
     .row {
       max-width: 50rem;
       padding: 0 2.5rem; } }
-  .row [class^="col-"] {
-    float: left; }
-    .row [class^="col-"]:not(:last-child) {
-      margin-right: 6rem; }
-      @media only screen and (max-width: 56.25em) {
-        .row [class^="col-"]:not(:last-child) {
-          margin-right: 0;
-          margin-bottom: 6rem; } }
+
+[class^="col-"] {
+  float: left; }
+  [class^="col-"]:not(:last-child) {
+    margin-right: 6rem; }
     @media only screen and (max-width: 56.25em) {
-      .row [class^="col-"] {
-        width: 100% !important; } }
-  .row .col-1-of-2 {
-    width: calc((100% - 6rem) / 2); }
+      [class^="col-"]:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 6rem; } }
+  @media only screen and (max-width: 56.25em) {
+    [class^="col-"] {
+      width: 100% !important; } }
+
+[class^="nonresponsive-col-"] {
+  float: left; }
+  [class^="nonresponsive-col-"]:not(:last-child) {
+    margin-right: 6rem; }
+
+.col-1-of-2 {
+  width: calc((100% - 6rem) / 2); }
+
+.row-nonresponsive {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row-nonresponsive:not(:last-child) {
+    margin-bottom: 4rem; }

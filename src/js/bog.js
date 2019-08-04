@@ -7,18 +7,21 @@ document.getElementById('nav-toggle').addEventListener('click', (e) => {
     toggleNav();
 })
 
-window.addEventListener('resize', (e) => {
-    if (getWidth() > 583){
-        searchParent.insertAdjacentElement("beforeend", addTodoEl)
-    } else {
-        document.querySelector('body').insertAdjacentElement('beforeend', addTodoEl)
-    }
-    console.log('Width:  ' +  getWidth() );
-    console.log('Height: ' + getHeight() );
-  
-})
+for(event of  ['load', 'resize']) {
+  window.addEventListener(event, changeAddtodoBtnPlace)
+}
 
 
+
+function changeAddtodoBtnPlace() {
+  if (getWidth() > 583){
+    searchParent.insertAdjacentElement("beforeend", addTodoEl)
+  } else {
+    document.querySelector('body').insertAdjacentElement('beforeend', addTodoEl)
+}
+// console.log('Width:  ' +  getWidth() );
+// console.log('Height: ' + getHeight() );
+}
 
 function toggleNav() {
     if (document.querySelector('body').classList.contains('show-nav')){

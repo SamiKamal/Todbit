@@ -13,6 +13,36 @@
 </head>
 
 <body>
+            <!-- ADD-TODO Section -->
+            <section class="add-todo">
+                    <div class="add-todo__box">
+                        <div class="add-todo__container">
+                            <div class="add-todo__input--box">
+                                <input type="text" placeholder="I want to" class="input add-todo__input" id="add-todo--input">
+                                <div class="highlight"></div>
+                            </div>
+                            <div class="row-nonresponsive add-todo__date--section">
+                                <div class="nonresponsive-col-1-of-2"><label for="add-todo__date" class="add-todo__label">Date</label></div>
+                                <div class="nonresponsive-col-1-of-2"><input type="date" class="add-todo__date" name="" id="add-todo__date">
+                                </div>
+                            </div>
+        
+                            <div class="row-nonresponsive add-todo__project--section">
+                                <div class="nonresponsive-col-1-of-2"><label for="add-todo__project" class="add-todo__label">Project</label>
+                                </div>
+                                <div class="nonresponsive-col-1-of-2">
+                                    <select class="add-todo__project" name="" id="add-todo__project">
+                                        <option selected value="none">None</option>
+                                        <option value="web-development">Web development</option>
+                                        <option value="creating-movie">Creating Movie</option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
+                </section>
+        
     <!-- responsive nav -->
     <div class="main-head__nav">
             <span id="nav-toggle" class="nav-toggle">
@@ -104,35 +134,6 @@
             </div>
         </section>
 
-        <!-- ADD-TODO Section -->
-        <section class="add-todo">
-            <div class="add-todo__box">
-                <div class="add-todo__container">
-                    <div class="add-todo__input--box">
-                        <input type="text" placeholder="I want to" class="input add-todo__input" id="add-todo--input">
-                        <div class="highlight"></div>
-                    </div>
-                    <div class="row add-todo__date--section">
-                        <div class="col-1-of-2"><label for="add-todo__date" class="add-todo__label">Date</label></div>
-                        <div class="col-1-of-2"><input type="date" class="add-todo__date" name="" id="add-todo__date">
-                        </div>
-                    </div>
-
-                    <div class="row add-todo__project--section">
-                        <div class="col-1-of-2"><label for="add-todo__project" class="add-todo__label">Project</label>
-                        </div>
-                        <div class="col-1-of-2">
-                            <select class="add-todo__project" name="" id="add-todo__project">
-                                <option selected value="none">None</option>
-                                <option value="web-development">Web development</option>
-                                <option value="creating-movie">Creating Movie</option>
-                            </select>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
     </main>
 
     <script src="./js/bundle.js"></script>

@@ -38,7 +38,7 @@
             transform: translateX(-50%);
             box-shadow: 0 -6px 20px rgba(0, 0, 0, .3);
             @include addItemCircle(111px, 111px);
-            z-index: 30;
+            // z-index: 1;
 
         }
 

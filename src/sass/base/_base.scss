@@ -105,6 +105,18 @@ a{
          clear: both;
       }
 }
+.row-nonresponsive{
+    max-width: 114rem;
+    margin: 0 auto;
+
+      &::after{
+          content: '';
+         display: table;
+         clear: both;
+      }
+
+}
+
 
 .row-mid{
     max-width: $grid-width;

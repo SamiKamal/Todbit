@@ -1,6 +1,7 @@
 .add-todo{
     display: none;
-    position: absolute;
+    position: fixed;
+    overflow: hidden;
     width: 100vw;
     background: rgba(0, 0, 0, .8);
     height: 100vh;
@@ -17,6 +18,11 @@
         padding: 2rem 4rem;
         background: $color-primary-white;
         border-radius: 49px;
+
+        @include responsive(small-phone){
+            width: 40rem;
+            padding: 1rem 2.5rem;
+        }
     }
 
     &__container{
@@ -34,6 +40,7 @@
     }
 
     &__date{
+        margin-left: 20px;
 
         &--section{
             padding-top: 3rem;
@@ -45,6 +52,9 @@
 
     &__project{
 
+        &:focus{
+            outline: none;
+        }
         &--section{
             text-align: left;
 
