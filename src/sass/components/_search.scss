@@ -21,6 +21,7 @@
     .add__to-do{
         display: inline-block;
         position: relative;
+        cursor: pointer;
         margin-left: 6rem;
         vertical-align: text-bottom;
         @include addItemCircle(56px, 56px);

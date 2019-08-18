@@ -46,6 +46,9 @@
             transition: all 0.3s;
             cursor: pointer;
 
+            &--active{
+                background-color: darken($color-primary, 10);
+            }
             &:hover {
                 background-color: darken($color-primary, 5);
             }
@@ -63,6 +66,16 @@
             margin-top: 1.5rem;
             position: relative;
             cursor: pointer;
+
+            &-input{
+                display: none;
+                background-color: darken($color-primary, 5);
+                border: 2px solid white;
+                color: white;
+                margin-top: 1rem;
+                padding: .5rem 1rem;
+                transition: .3s all;
+            }
 
             a {
                 color: #CFE7FF;

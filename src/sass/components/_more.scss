@@ -5,7 +5,7 @@
     height: 11.5rem;
     position: absolute;
     top: 50%;
-    left: 50%;
+    // left: 50%;
     z-index: 100;
 
     &__box{
@@ -31,5 +31,67 @@
                     }
         }
 
+    }
+
+    &__comment--box{
+        input{
+            width: 100%;
+            border: 2px solid $color-primary;
+            font-size: 1.5rem;
+            padding: .5rem 1rem;
+        }
+
+        button{
+            background-color: $color-primary;
+            border: none;
+            padding: .5rem 1rem;
+            margin-top: 0.5rem;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 1rem 4rem rgba(0, 0, 0, .3);
+        }
+    }
+}
+
+.move-to{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    max-height: 400px;
+    background: $color-primary-white;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    padding: .5rem 1rem;
+    border: 1px solid $color-grey-light-3;
+    border-radius: 14px;
+    overflow: auto;
+
+    &::after{
+        content: "";
+        position: absolute;
+        top: -14px;
+        left: 75px;
+        border-style: solid;
+        border-width: 0px 15px 15px;
+        border-color: $color-primary-white transparent;
+        display: block;
+        z-index: 6;
+            }
+
+    .move-to__list{
+        list-style: none;
+        padding: .5rem;
+    }
+
+    &__item{
+        font-size: 1.3rem;
+        padding: 1rem;
+
+        &:hover{
+            background-color: darken($color-primary-white, 4);
+            border-radius: 3px;
+            cursor: pointer;
+        }
     }
 }

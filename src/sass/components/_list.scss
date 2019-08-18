@@ -48,6 +48,23 @@
         border-bottom: 1px solid $color-grey-light;
         cursor: text;
 
+        // &::before{
+        //   content: 'it\'s important';
+        //   display: block;
+        //   position: absolute;
+        //   bottom: 0;
+        //   font-size: 1.5rem;
+        //   color: $color-grey-light-2;
+        // }
+
+        p{
+          display: block;
+          position: absolute;
+          bottom: 0;
+          font-size: 1.5rem;
+          color: #9E0003          ;
+          opacity: .8 ;
+        }
         &--uncompleted{
 
                span:before, span:after {
@@ -97,12 +114,20 @@
       
             }
             
-            &::after{
-            content: '\205D';
-            display: inline-block;
-            position: absolute;
-            right: 0;
-            cursor: pointer;
+        //     &::after{
+        //     content: '\205D';
+        //     display: inline-block;
+        //     position: absolute;
+        //     right: 0;
+        //     cursor: pointer;
+        // }
+
+        div{
+          display: inline-block;
+          position: absolute;
+          right: 0;
+          cursor: pointer;
+
         }
     }
 

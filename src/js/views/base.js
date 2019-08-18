@@ -1,0 +1,28 @@
+export const elements = {
+    searchInput: '.search__input',
+    projectItem: '.nav__projects--item',
+    projectsList: '.nav__projects--list',
+    addProjectItem: '.nav__projects--add-item',
+    addProjectItemInput: '.nav__projects--add-item-input',
+    parentListUncompleted: '.list__ul--uncompleted',
+    parentListCompleted: '.list__ul--completed',
+    listComment: '.list__item--comment',
+    parentList: '.list',
+    addTodoButton: '.add__to-do',
+    addTodoMenu: '.add-todo',
+    addTodoBox: '.add-todo__box',
+    addTodoInput: '.add-todo__input',
+    addTodoBoxButton: '.add-todo__btn',
+    addTodoSelect: '.add-todo__project',
+    more: '.more',
+    moreDeleteTask: '.more__list--deleteTask',
+    moreMoveTo: '.more__list--moveTo',
+    moreAddComment: '.more__list--addComment',
+    moreAddCommentBtn: '.more__comment--btn',
+    moreAddCommentInput: '.more__comment--input',
+    moveto: '.move-to',
+    movetoList: '.move-to__list',
+    movetoItem: '.move-to__item',
+    parentListChild: '.list__ul'
+
+}
