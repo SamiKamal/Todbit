@@ -566,6 +566,11 @@ input:focus ~ .highlight {
     @media only screen and (max-height: 36.875em) {
       .nav .nav__projects {
         margin-top: 1rem; } }
+  .nav .nav__projects--list div {
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
+    cursor: pointer; }
   .nav .nav__projects--list .nav__projects--item {
     font-size: 2.2rem;
     list-style: none;

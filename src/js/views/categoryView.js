@@ -2,7 +2,7 @@ import {elements} from './base'
  
 export function showCategory(name, id) {
     let markup = `
-    <li data-id="${id}" class="nav__projects--item"><a href="#">${name}</a></li>
+    <li data-id="${id}" class="nav__projects--item"><a href="#">${name}</a><div class="ThreeColumnsProject">⋮</div></li>
     `
 
     document.querySelector(elements.projectsList).insertAdjacentHTML('afterbegin', markup);
@@ -21,6 +21,23 @@ function addCatogryToSlecet(name, id) {
     document.querySelector(elements.addTodoSelect).insertAdjacentHTML('beforeend', markup)
     document.querySelector(elements.movetoList).insertAdjacentHTML('afterbegin', html)
 }
+
+export function removeCategoryFromSelect(id) {
+    Array.from(document.querySelector(elements.addTodoSelect).children).forEach(el => {
+        if (el.value === id){
+            el.parentElement.removeChild(el)
+        }
+    })
+
+    Array.from(document.querySelector(elements.movetoList).children).forEach(el => {
+        if (el.dataset.id === id){
+            el.parentElement.removeChild(el)
+        }
+    })
+
+
+}
+
 
 export function showRelatedLists(currentCategoryID, Lists) {
     Lists.forEach(el => {

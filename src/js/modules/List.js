@@ -17,7 +17,7 @@ export default class List{
         return this.lists
     }
 
-    removeCategory(id){
+    removeList(id){
         let index = this.lists.findIndex(el => el.id === id)
 
         this.lists.splice(index, 1)

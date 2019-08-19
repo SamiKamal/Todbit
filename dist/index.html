@@ -68,7 +68,7 @@
                     <div class="nav__projects">
                         <h2 class="nav__heading heading__secondary">Your projects:</h2>
                         <ul class="nav__projects--list">
-                            <li data-id="main" class="nav__projects--item nav__projects--item--active"><a href="#">Personal</a></li>
+                            <li data-id="main" class="nav__projects--item nav__projects--item--main nav__projects--item--active"><a href="#">Personal</a></li>
                             <!-- <li class="nav__projects--item"><a href="#">Website Development</a></li>
                             <li class="nav__projects--item"><a href="#">Creating movie</a></li> -->
                             <li class="nav__projects--add-item "><span class="nav__add-item--icon add-item--icon"><i
@@ -134,7 +134,7 @@
 
 
         <!-- MORE Section -->
-        <section class="more" style="display: none">
+        <section class="more moreList" style="display: none">
             <div class="more__box">
                 <ul class="more__list">
                     <li class="more__list--item more__list--addComment"><i class="far fa-comment-alt"></i>Add comment <div class="more__comment--box" style="display: none"><input class="more__comment--input" maxlength="80" type="text" name="boga"> <button class="more__comment--btn">Add</button></div> </li>
@@ -144,6 +144,13 @@
             </div>
         </section>
 
+        <section class="more moreProject" style="display: none">
+                <div class="more__box">
+                    <ul class="more__list">
+                        <li class="more__list--item more__list--deleteTask more__list--deleteTask--Project"><i class="far fa-trash-alt"></i>Delete Project</li>
+                    </ul>
+                </div>
+            </section>
     </main>
             <div class="move-to" style="display: none">
                 <ul class="move-to__list">

@@ -37,6 +37,15 @@
     .nav__projects--list {
         // margin-left: 1.5rem;
 
+        div{
+            display: inline-block;
+            position: absolute;
+            right: 1rem;
+            cursor: pointer;
+  
+          }
+  
+
         .nav__projects--item {
             font-size: 2.2rem;
             list-style: none;

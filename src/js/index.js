@@ -36,11 +36,12 @@ let state = {
     lists: new List()
 }
 let currentCategory = 'main';
-let parent
+let parent, parentProject
 // state.category.addCategory(document.querySelector('.nav__projects--add-item-input').value)
 
 // console.log(state.category)
 // console.log(state.category)
+
 
 // Events Listners
 document.addEventListener('click', openProjectInput)
@@ -54,11 +55,11 @@ for (event of ['click', 'keypress']){
 document.querySelector(elements.projectsList).addEventListener('click',selectedCategory)
 document.querySelector(elements.parentList).addEventListener('click', completedList)
 document.addEventListener('click', showMore)
-document.querySelector(elements.more).addEventListener('click', moreClicked)
+document.querySelector(elements.moreList).addEventListener('click', moreClicked)
 document.querySelector(elements.moveto).addEventListener('click', moveListTo)
 document.querySelector(elements.searchInput).addEventListener('keyup', searchLists)
-
-
+document.addEventListener('click', showMoreProjects)
+document.querySelector(elements.moreProject).addEventListener('click', deleteProject)
 
 
 
@@ -124,7 +125,7 @@ function addList(e) {
 }
 
 function selectedCategory(e) {
-    if (e.target.closest('.nav__projects--item--active') || e.target.classList.contains('nav__projects--add-item-input') || e.target.closest(elements.addProjectItem) || e.target.classList.contains('nav__projects--list')) {
+    if (e.target.closest('.nav__projects--item--active') || e.target.classList.contains('nav__projects--add-item-input') || e.target.closest(elements.addProjectItem) || e.target.classList.contains('nav__projects--list') || e.target.closest(`.nav__projects--list div`)) {
         return;
     } else {
         document.querySelectorAll('.nav__projects--item').forEach(el => {
@@ -154,16 +155,16 @@ function completedList(e) {
 function showMore(e) {
     // Show more section
     if (e.target.textContent == '⋮' && e.target === e.target.closest('.threeColumns')){
-        document.querySelector(elements.more).style.display = 'block';
-        document.querySelector(elements.more).style.top = `${e.clientY}px`
-        document.querySelector(elements.more).style.left = `${e.clientX - document.querySelector(elements.more).offsetWidth - 5}px`
+        document.querySelector(elements.moreList).style.display = 'block';
+        document.querySelector(elements.moreList).style.top = `${e.clientY}px`
+        document.querySelector(elements.moreList).style.left = `${e.clientX - document.querySelector(elements.moreList).offsetWidth - 5}px`
          parent = e.target.parentElement
         return parent;
-    } else if (e.target.closest(elements.more)) {
+    } else if (e.target.closest(elements.moreList)) {
         return
     } else {
         // display none all
-        document.querySelector(elements.more).style.display = 'none'
+        document.querySelector(elements.moreList).style.display = 'none'
         document.querySelector('.more__comment--box').style.display = 'none'
         document.querySelector(elements.moveto).style.display = 'none'
     }
@@ -182,7 +183,7 @@ function moreClicked(e) {
             }
         })   
         parent.parentElement.removeChild(parent)
-        document.querySelector(elements.more).style.display = 'none';  
+        document.querySelector(elements.moreList).style.display = 'none';  
     } else if (e.target === e.target.closest(elements.moreAddComment)){
         this.querySelector('.more__comment--box').style.display = this.querySelector('.more__comment--box').style.display === 'none' ? 'block' : 'none';
         document.querySelector(elements.moreAddCommentInput).focus()
@@ -202,7 +203,7 @@ function moreClicked(e) {
             }
         })
         document.querySelector(elements.moreAddCommentInput).value = ''
-        document.querySelector(elements.more).style.display = 'none';  
+        document.querySelector(elements.moreList).style.display = 'none';  
 
     }
 
@@ -237,5 +238,53 @@ function searchLists(e) {
     })
 }
 
+function showMoreProjects(e) {
+        // Show more section
+        if (e.target.textContent == '⋮' && e.target === e.target.closest('div') && e.target.closest('.ThreeColumnsProject')){
+            
+            document.querySelector(elements.moreProject).style.display = 'block';
+            document.querySelector(elements.moreProject).style.top = `${e.clientY}px`
+            document.querySelector(elements.moreProject).style.left = `${e.clientX - document.querySelector(elements.moreProject).offsetWidth - 5}px`
+            parentProject = e.target.parentElement
+            return parentProject;
+        } else if (e.target.closest(elements.moreProject)) {
+            return
+        } else {
+            // display none all
+            document.querySelector(elements.moreProject).style.display = 'none'
+        }
+    
+}
 
+function deleteProject(e) {
+    // check if clicked on delete project
+    if (e.target.closest('.more__list--deleteTask--Project')){
+        // store the id
+        const id = parentProject.dataset.id;
+        // loop over the lists and delete it
+        state.lists.lists.forEach(el => {
+            if (el.categoryID === id){
+                state.lists.removeList(el.id)
+                // delete it from both completed lists and uncompleted lists
+                listView.removeList(el.id,Array.from(document.querySelector(elements.parentListUncompleted).children))
+                listView.removeList(el.id,Array.from(document.querySelector(elements.parentListCompleted).children))
+            }
+        })
+        // remove the project from the UI
+        parentProject.parentElement.removeChild(parentProject)
+        // set the current project to Personal
+        currentCategory = 'main'
+        categoryView.showRelatedLists(currentCategory,state.lists.lists)
+        // set the active link on Personal
+        if (document.querySelector('.nav__projects--item--main').classList.contains('nav__projects--item--active')){
+            document.querySelector('.nav__projects--item--main').classList.remove('nav__projects--item--active')
+        } else {
+            document.querySelector('.nav__projects--item--main').classList.add('nav__projects--item--active')
+        }
+        // remove the category from Move to and Selecet
+        categoryView.removeCategoryFromSelect(id)
+        // Hide the more section
+        document.querySelector(elements.moreProject).style.display = 'none'
 
+    }
+}
