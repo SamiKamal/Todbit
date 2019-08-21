@@ -12,13 +12,27 @@ export default class Category{
         }
 
         this.categories.push(category)
+        let parsedList = JSON.parse(localStorage.getItem('categories'));
+        if (parsedList){
+            parsedList.push(category)
+
+            localStorage.setItem('categories',JSON.stringify(parsedList))
+
+        } else {
+            localStorage.setItem('categories', JSON.stringify(this.categories))
+        }
         return category;
     }
 
 
     removeCategory(id){
         let index = this.categories.findIndex(el => el.id === id)
-
+        let parsedList = JSON.parse(localStorage.getItem('categories'))
+        let indexStorage = parsedList.findIndex(el => el.id === id)
+        parsedList.splice(indexStorage, 1)
+        localStorage.setItem('categories', JSON.stringify(parsedList))
+        
         this.categories.splice(index, 1)
+        // console.log(indexStorage)
      }
 }

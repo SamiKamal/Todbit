@@ -27,20 +27,19 @@ import * as listView from './views/listView'
 
 
 let addProjectInput = document.querySelector(elements.addProjectItemInput);
-
-
-
-// Category
 let state = {
     category: new Category(),
     lists: new List()
 }
+// let listStorage = localStorage.getItem('lists') || localStorage.setItem('list','');
+// let categoryStorage = localStorage.getItem('categories') || localStorage.setItem('category','');
+state.category.categories = JSON.parse(localStorage.getItem('categories')) || []
+state.lists.lists = JSON.parse(localStorage.getItem('lists')) || []
+
 let currentCategory = 'main';
 let parent, parentProject
-// state.category.addCategory(document.querySelector('.nav__projects--add-item-input').value)
 
-// console.log(state.category)
-// console.log(state.category)
+
 
 
 // Events Listners
@@ -61,8 +60,14 @@ document.querySelector(elements.searchInput).addEventListener('keyup', searchLis
 document.addEventListener('click', showMoreProjects)
 document.querySelector(elements.moreProject).addEventListener('click', deleteProject)
 
+// LocalStorage
+JSON.parse(localStorage.getItem('categories')).forEach(el => {
+    categoryView.showCategory(el.name,el.id)
+})
 
-
+JSON.parse(localStorage.getItem('lists')).forEach(el => {
+    listView.showList(el.name,el.completed,el.id,currentCategory,el.categoryID,el.comment)
+})
 
 
 
@@ -91,9 +96,11 @@ function addProjectItem() {
     console.log(state)
     this.value = ''
     addProjectInput.style.display = 'none'
+    console.log(localStorage.getItem('categories'))
 }
 
 function showAddTodoMenu(e) { 
+    if (document.activeElement === document.querySelector('.nav__projects--add-item-input') || document.activeElement === document.querySelector(elements.searchInput) || document.activeElement === document.querySelector(elements.moreAddCommentInput)) return
     if (e.target.closest(elements.addTodoButton) || e.keyCode === 81 || e.keyCode === 113){
         if (document.querySelector(elements.addTodoMenu).style.display = 'none'){
             document.querySelector(elements.addTodoMenu).style.display = 'block'
@@ -146,9 +153,20 @@ function completedList(e) {
             if (el.id === e.target.parentNode.dataset.id){
                 el.completed = el.completed==='completed' ? 'uncompleted' : 'completed'
                 listView.showList(el.name, el.completed, el.id,currentCategory, el.categoryID, el.comment)
-                listView.removeList(el.id, Array.from(e.target.parentElement.parentElement.children))
+                listView.removeList(el.id, Array.from(e.target.parentElement.parentElement.children))                
             }
         })
+
+        // Local storage
+        let parsedList = JSON.parse(localStorage.getItem('lists'))
+        parsedList.forEach(el => {
+            if (el.id === e.target.parentNode.dataset.id){
+                el.completed = el.completed==='completed' ? 'uncompleted' : 'completed'
+                localStorage.setItem('lists',JSON.stringify(parsedList))
+                
+            }
+        })
+
     }
 }
 
@@ -176,12 +194,7 @@ function moreClicked(e) {
     let id;
     if (e.target === e.target.closest(elements.moreDeleteTask)){
         id = parent.dataset.id;
-        state.lists.lists.forEach(el => {
-            if (el.id === id){
-                let index = state.lists.lists.indexOf(el)
-                state.lists.lists.splice(index,1)
-            }
-        })   
+        state.lists.removeList(id)
         parent.parentElement.removeChild(parent)
         document.querySelector(elements.moreList).style.display = 'none';  
     } else if (e.target === e.target.closest(elements.moreAddComment)){
@@ -202,6 +215,15 @@ function moreClicked(e) {
                 el.comment = document.querySelector(elements.moreAddCommentInput).value
             }
         })
+        // Set the comment property on the localStorage
+        let parsedList = JSON.parse(localStorage.getItem('lists'))
+        parsedList.forEach(el => {
+            if (el.id === parent.dataset.id){
+                el.comment = document.querySelector(elements.moreAddCommentInput).value
+                localStorage.setItem('lists',JSON.stringify(parsedList))
+            }
+
+        })
         document.querySelector(elements.moreAddCommentInput).value = ''
         document.querySelector(elements.moreList).style.display = 'none';  
 
@@ -219,6 +241,14 @@ function moveListTo(e) {
             if (el.id === parent.dataset.id){
                 el.categoryID = categoryID
                 listView.removeList(el.id,Array.from(parent.parentElement.children))
+            }
+        })
+        // Local storage
+        let parsedList = JSON.parse(localStorage.getItem('lists'))
+        parsedList.forEach(el => {
+            if (el.id === parent.dataset.id){
+                el.categoryID = categoryID
+                localStorage.setItem('lists',JSON.stringify(parsedList))
             }
         })
     }
@@ -261,26 +291,40 @@ function deleteProject(e) {
     if (e.target.closest('.more__list--deleteTask--Project')){
         // store the id
         const id = parentProject.dataset.id;
+        
         // loop over the lists and delete it
         state.lists.lists.forEach(el => {
+            console.log(el)
             if (el.categoryID === id){
                 state.lists.removeList(el.id)
-                // delete it from both completed lists and uncompleted lists
-                listView.removeList(el.id,Array.from(document.querySelector(elements.parentListUncompleted).children))
-                listView.removeList(el.id,Array.from(document.querySelector(elements.parentListCompleted).children))
+                // // delete it from both completed lists and uncompleted lists
+                // listView.removeList(el.id,Array.from(document.querySelector(elements.parentListUncompleted).children))
+                // listView.removeList(el.id,Array.from(document.querySelector(elements.parentListCompleted).children))
+                
+            }
+        })
+        // console.log(state.lists.lists)
+        // loop over the categories and delete it
+        state.category.categories.forEach(el => {
+            if (el.id === id ){
+                if (parentProject.classList.contains('nav__projects--item--active')){
+                    document.querySelector('.nav__projects--item--main').classList.add('nav__projects--item--active')
+                    currentCategory = 'main'
+                    categoryView.showRelatedLists(currentCategory,state.lists.lists)
+            
+                } 
+                state.category.removeCategory(el.id)
             }
         })
         // remove the project from the UI
         parentProject.parentElement.removeChild(parentProject)
         // set the current project to Personal
-        currentCategory = 'main'
-        categoryView.showRelatedLists(currentCategory,state.lists.lists)
         // set the active link on Personal
-        if (document.querySelector('.nav__projects--item--main').classList.contains('nav__projects--item--active')){
-            document.querySelector('.nav__projects--item--main').classList.remove('nav__projects--item--active')
-        } else {
-            document.querySelector('.nav__projects--item--main').classList.add('nav__projects--item--active')
-        }
+        // if (document.querySelector('.nav__projects--item--main').classList.contains('nav__projects--item--active')){
+        //     document.querySelector('.nav__projects--item--main').classList.remove('nav__projects--item--active')
+        // } else {
+        //     document.querySelector('.nav__projects--item--main').classList.add('nav__projects--item--active')
+        // }
         // remove the category from Move to and Selecet
         categoryView.removeCategoryFromSelect(id)
         // Hide the more section
