@@ -27,6 +27,7 @@ import * as listView from './views/listView'
 
 
 let addProjectInput = document.querySelector(elements.addProjectItemInput);
+// Category
 let state = {
     category: new Category(),
     lists: new List()
@@ -38,7 +39,6 @@ state.lists.lists = JSON.parse(localStorage.getItem('lists')) || []
 
 let currentCategory = 'main';
 let parent, parentProject
-
 
 
 
