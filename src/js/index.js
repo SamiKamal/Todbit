@@ -61,13 +61,19 @@ document.addEventListener('click', showMoreProjects)
 document.querySelector(elements.moreProject).addEventListener('click', deleteProject)
 
 // LocalStorage
-JSON.parse(localStorage.getItem('categories')).forEach(el => {
-    categoryView.showCategory(el.name,el.id)
-})
+if (localStorage.getItem('categories')){
+    JSON.parse(localStorage.getItem('categories')).forEach(el => {
+        categoryView.showCategory(el.name,el.id)
+    })
+    
+}
 
-JSON.parse(localStorage.getItem('lists')).forEach(el => {
-    listView.showList(el.name,el.completed,el.id,currentCategory,el.categoryID,el.comment)
-})
+if (localStorage.getItem('lists')){
+    JSON.parse().forEach(el => {
+        listView.showList(el.name,el.completed,el.id,currentCategory,el.categoryID,el.comment)
+    })
+    
+}
 
 
 
@@ -298,8 +304,8 @@ function deleteProject(e) {
             if (el.categoryID === id){
                 state.lists.removeList(el.id)
                 // // delete it from both completed lists and uncompleted lists
-                // listView.removeList(el.id,Array.from(document.querySelector(elements.parentListUncompleted).children))
-                // listView.removeList(el.id,Array.from(document.querySelector(elements.parentListCompleted).children))
+                listView.removeList(el.id,Array.from(document.querySelector(elements.parentListUncompleted).children))
+                listView.removeList(el.id,Array.from(document.querySelector(elements.parentListCompleted).children))
                 
             }
         })
