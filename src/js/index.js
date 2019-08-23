@@ -27,6 +27,7 @@ import * as listView from './views/listView'
 
 
 let addProjectInput = document.querySelector(elements.addProjectItemInput);
+
 // Category
 let state = {
     category: new Category(),
@@ -69,7 +70,7 @@ if (localStorage.getItem('categories')){
 }
 
 if (localStorage.getItem('lists')){
-    JSON.parse().forEach(el => {
+    JSON.parse(localStorage.getItem('lists')).forEach(el => {
         listView.showList(el.name,el.completed,el.id,currentCategory,el.categoryID,el.comment)
     })
     
@@ -102,7 +103,6 @@ function addProjectItem() {
     console.log(state)
     this.value = ''
     addProjectInput.style.display = 'none'
-    console.log(localStorage.getItem('categories'))
 }
 
 function showAddTodoMenu(e) { 
@@ -130,7 +130,6 @@ function addList(e) {
             document.querySelector(elements.addTodoInput).value = ''
             console.log(state.lists)
             document.querySelector(elements.addTodoMenu).style.display = 'none'
-                // categoryView.showRelatedLists(currentCategory, state.lists.lists)
 
         }
 
@@ -300,10 +299,9 @@ function deleteProject(e) {
         
         // loop over the lists and delete it
         state.lists.lists.forEach(el => {
-            console.log(el)
             if (el.categoryID === id){
                 state.lists.removeList(el.id)
-                // // delete it from both completed lists and uncompleted lists
+                 // delete it from both completed lists and uncompleted lists
                 listView.removeList(el.id,Array.from(document.querySelector(elements.parentListUncompleted).children))
                 listView.removeList(el.id,Array.from(document.querySelector(elements.parentListCompleted).children))
                 

@@ -28,12 +28,13 @@ export default class List{
     }
 
     removeList(id){
-        let index = this.lists.findIndex(el => el.id === id)
-        this.lists.splice(index, 1)
-        let parsedList = JSON.parse(localStorage.getItem('lists'))
-        let indexStorage = parsedList.findIndex(el => el.id === id)
+        // const index = this.lists.findIndex(el => el.id === id)
+        // this.lists.splice(index, 1)
+        const parsedList = JSON.parse(localStorage.getItem('lists'))
+        const indexStorage = parsedList.findIndex(el => el.id === id)
         parsedList.splice(indexStorage, 1)
         localStorage.setItem('lists', JSON.stringify(parsedList))
+        this.lists = parsedList
         
      }
 
