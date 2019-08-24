@@ -10,6 +10,7 @@ body{
     position: relative;
     overflow-x: hidden;
     width: 100%;
+    min-height: 100vh;
     // overflow:hidden ;
 
     
@@ -55,19 +56,12 @@ main{
   
 }
 .add__to-do{
-    
     -webkit-transform: translateX(0);
     transform: translateX(0);
-    
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    
-    -webkit-transition: 300ms ease all;
-    transition: 300ms ease all;
-   
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  
+        
+    -webkit-transition: 300ms transform all;
+    transition: 300ms transform all;
+     
   
 }
 
@@ -83,10 +77,8 @@ main{
       @include responsive(phone){
         -webkit-transform: translateX(362.81px);
         transform: translateX(362.81px);
-        
-        -webkit-transform: translate3d(362.81px, 0, 0);
-        transform: translate3d(362.81px, 0, 0);
     
+        
       }
   }
 
@@ -163,3 +155,34 @@ input{
         outline: none;
     }
 }
+
+
+// Animations
+/**
+ * ----------------------------------------
+ * animation slide-right
+ * ----------------------------------------
+ */
+//  @-webkit-keyframes slide-right {
+//     0% {
+//       -webkit-transform: translateX(0);
+//               transform: translateX(0);
+//     }
+//     100% {
+//       -webkit-transform: translateX(400px);
+//               transform: translateX(400px);
+//     }
+//   }
+//   @keyframes slide-right {
+//     0% {
+//       -webkit-transform: translateX(0);
+//               transform: translateX(0);
+//     }
+//     100% {
+//       -webkit-transform: translateX(400px);
+//               transform: translateX(400px);
+//     }
+
+    
+//   }
+  

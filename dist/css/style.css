@@ -9,7 +9,8 @@ body {
   box-sizing: border-box;
   position: relative;
   overflow-x: hidden;
-  width: 100%; }
+  width: 100%;
+  min-height: 100vh; }
 
 html {
   font-size: 62.5%; }
@@ -37,12 +38,8 @@ main {
 .add__to-do {
   -webkit-transform: translateX(0);
   transform: translateX(0);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-transition: 300ms ease all;
-  transition: 300ms ease all;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; }
+  -webkit-transition: 300ms transform all;
+  transition: 300ms transform all; }
 
 .show-nav main {
   -webkit-transform: translateX(362.81px);
@@ -53,9 +50,7 @@ main {
 @media only screen and (max-width: 37.5em) {
   .show-nav .add__to-do {
     -webkit-transform: translateX(362.81px);
-    transform: translateX(362.81px);
-    -webkit-transform: translate3d(362.81px, 0, 0);
-    transform: translate3d(362.81px, 0, 0); } }
+    transform: translateX(362.81px); } }
 
 a {
   text-decoration: none; }
@@ -106,6 +101,11 @@ input {
   input:focus {
     outline: none; }
 
+/**
+ * ----------------------------------------
+ * animation slide-right
+ * ----------------------------------------
+ */
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
@@ -165,7 +165,7 @@ input:focus ~ .highlight {
     .add__to-do {
       display: flex;
       position: sticky;
-      bottom: 1rem;
+      top: 81%;
       margin: 0;
       left: 50%;
       transform: translateX(-50%);

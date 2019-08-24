@@ -33,7 +33,7 @@
         @include responsive(phone){
             display: flex;
             position: sticky;
-            bottom: 1rem;
+            top: 81%;
             margin: 0;
             left: 50%;
             transform: translateX(-50%);

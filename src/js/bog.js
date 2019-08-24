@@ -27,7 +27,9 @@ function toggleNav() {
     if (document.querySelector('body').classList.contains('show-nav')){
         document.querySelector('body').classList.remove('show-nav');
         document.querySelector('nav').classList.remove('pull-nav');
-        document.querySelector('body').style.overflowY = 'initial'
+        setTimeout(() => {
+          document.querySelector('body').style.overflowY = 'initial'
+        }, 300);
 
         // document.querySelector('nav').style.display = 'none'
         
