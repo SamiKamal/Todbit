@@ -1,5 +1,4 @@
 .sign-in{
-  display: none;
   width: 100%;
   height: 100vh;
   position: sticky;
@@ -7,22 +6,53 @@
   left: 0;
   background-color: white;
 
+  &__link{
+    height: 50px;
+    cursor: pointer;
+    border-width: 0;
+    background: $color-primary;
+    border-radius: 5px;
+    white-space: nowrap;
+    box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+    transition-property: background-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%,-50%);
+    border: 0;
+    z-index: 1;
+
+    &:focus,
+    &:hover {
+      box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+    }
+
+  }
   &__guest{
     display: inline-block;
-    cursor: pointer;
+    vertical-align: middle;
+    padding: 0 44px;
     font-size: 2rem;
-    color: $color-primary;
     font-weight: 700;
-    position: absolute;
-    top: 48%;
-    left: 51%;
-    transform: translate(-45%,-50%);
+    color: white;
+
+  }
+
+  .google-button{
+    top: 40%;
+    left: 50%;
+    transform: translate(-40%,-50%);
+
   }
 }
 
 
 .google-button {
     height: 50px;
+    cursor: pointer;
     border-width: 0;
     background: white;
     color: #737373;
@@ -34,9 +64,6 @@
     transition-timing-function: ease-in-out;
     padding: 0;
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-40%,-50%);
     z-index: 1;
 
     
@@ -70,3 +97,38 @@
     font-family: 'Roboto',arial,sans-serif;
   }
   
+
+.sign-out__link{
+  height: 50px;
+  cursor: pointer;
+  border-width: 0;
+  background: $color-primary-white;
+  border-radius: 5px;
+  white-space: nowrap;
+  box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+  transition-property: background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+  padding: 0 5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0;
+  z-index: 1;
+
+  .sign-out__guest{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 44px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: $color-primary;
+
+  }
+  &:focus,
+  &:hover {
+    box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+  }
+
+
+}

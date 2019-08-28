@@ -1,4 +1,5 @@
 .nav {
+    max-width: 362.81px;
     overflow: auto;
     display: block;
     background-color: $color-primary;
@@ -11,6 +12,7 @@
     // transform: translateX(-300px);
 
     @include responsive(tab-land) {
+        max-width: 340.81px;
         position: absolute;
         top: 0;
         left: -362.81px;  
@@ -125,29 +127,10 @@
     // bottom 
     &__bottom {
         display: block;
-        margin-top: 5rem;
-        .nav__days {
-            display: block;
-            list-style: none;
-            width: 100%;
+        margin-bottom: 0rem;
 
-            &--item {
-                display: block;
-                padding: 1rem;
-                border-radius: 4px;
-                border-bottom: 1px solid rgba(226, 226, 226, 0.233);
-                transition: all 0.3s;
-
-                &:hover {
-                    background-color: darken($color-primary, 5);
-                }
-
-                a {
-                    font-size: 3rem;
-                    font-weight: 700;
-                    color: inherit;
-                }
-            }
+        button{
+            bottom: 3rem;
         }
     }
 

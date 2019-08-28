@@ -64,4 +64,9 @@ function getWidth() {
     );
   }
   
+  if (document.querySelector('.sign-in').style.display === 'block'){
+    document.querySelector('body').style.overflow = 'none'
+  } else {
+    document.querySelector('body').style.overflow = 'initial'
+  }
   

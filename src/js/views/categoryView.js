@@ -1,12 +1,15 @@
 import {elements} from './base'
- 
-export function showCategory(name, id) {
-    let markup = `
-    <li data-id="${id}" class="nav__projects--item"><a href="#">${name}</a><div class="ThreeColumnsProject">⋮</div></li>
-    `
+import * as listView from './listView'
 
-    document.querySelector(elements.projectsList).insertAdjacentHTML('afterbegin', markup);
-    addCatogryToSlecet(name,id)
+export function showCategory(name, id) {
+            let markup = `
+            <li data-id="${id}" class="nav__projects--item"><a href="#">${name}</a><div class="ThreeColumnsProject">⋮</div></li>
+            `
+        
+            document.querySelector(elements.projectsList).insertAdjacentHTML('afterbegin', markup);
+            addCatogryToSlecet(name,id)
+        
+        
 }
 
 function addCatogryToSlecet(name, id) {
@@ -42,21 +45,14 @@ export function removeCategoryFromSelect(id) {
 export function showRelatedLists(currentCategoryID, Lists) {
     Lists.forEach(el => {
         if (el.categoryID === currentCategoryID){
-            console.log('AHAAAA')
-            const html = `
-             <li data-id="${el.id}" class="list__item list__item--${el.completed}"><span>${el.name}</span><p class="list__item--comment">${el.comment}</p><div class="threeColumns">⋮</div></li>
-                 `
-         document.querySelector(`.list__ul--${el.completed}`).insertAdjacentHTML('afterbegin', html);
+            listView.showList(el.name,el.completed,el.id,currentCategoryID,el.categoryID,el.comment)
         } else {
-            console.log('NOOOOOOOOOOOOOO')
             Array.from(document.querySelector(`.list__ul--${el.completed}`).children).forEach(els => {
                 if (els.dataset.id === el.id){
                     els.parentElement.removeChild(els)
                 }
             })
         }
-
-        console.log(el.categoryID === currentCategoryID && check(el.id,Array.from(document.querySelector(elements.parentListUncompleted).children)))
     })
 }
 

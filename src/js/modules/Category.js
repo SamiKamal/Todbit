@@ -5,7 +5,7 @@ export default class Category{
         this.categories = [];
     }
 
-    addCategory(name){
+    addCategory(name,databaseRef,userId){
         let category = {
             id: uniqid(),
             name
@@ -21,11 +21,16 @@ export default class Category{
         } else {
             localStorage.setItem('categories', JSON.stringify(this.categories))
         }
+
+        if (userId) {
+            databaseRef.set(JSON.parse(localStorage.getItem('categories')))
+        }
+
         return category;
     }
 
 
-    removeCategory(id){
+    removeCategory(id,databaseRef,userId){
         let index = this.categories.findIndex(el => el.id === id)
         let parsedList = JSON.parse(localStorage.getItem('categories'))
         let indexStorage = parsedList.findIndex(el => el.id === id)
@@ -33,6 +38,11 @@ export default class Category{
         localStorage.setItem('categories', JSON.stringify(parsedList))
         
         this.categories.splice(index, 1)
-        // console.log(indexStorage)
+        console.log(indexStorage)
+
+        if (userId) {
+            databaseRef.set(JSON.parse(localStorage.getItem('categories')))
+        }
+
      }
 }

@@ -24,6 +24,7 @@ export const elements = {
     moveto: '.move-to',
     movetoList: '.move-to__list',
     movetoItem: '.move-to__item',
-    parentListChild: '.list__ul'
+    parentListChild: '.list__ul',
+    navHeadingPrimary: '.heading__primary'
 
 }
