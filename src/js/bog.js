@@ -29,6 +29,7 @@ function toggleNav() {
         document.querySelector('nav').classList.remove('pull-nav');
         setTimeout(() => {
           document.querySelector('body').style.overflowY = 'initial'
+          document.querySelector('html').style.overflowY = 'initial'
         }, 300);
 
         // document.querySelector('nav').style.display = 'none'
@@ -37,6 +38,7 @@ function toggleNav() {
 } else {
     document.querySelector('body').classList.add('show-nav')
     document.querySelector('body').style.overflowY = 'hidden'
+    document.querySelector('html').style.overflowY = 'hidden'
 
     // document.querySelector('nav').classList.add('pull-nav')
     // document.querySelector('nav').style.display = 'block' 
@@ -66,7 +68,9 @@ function getWidth() {
   
   if (document.querySelector('.sign-in').style.display === 'block'){
     document.querySelector('body').style.overflow = 'none'
+    document.querySelector('html').style.overflow = 'none'
   } else {
     document.querySelector('body').style.overflow = 'initial'
+    document.querySelector('html').style.overflow = 'initial'
   }
   

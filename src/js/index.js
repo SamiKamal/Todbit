@@ -18,6 +18,7 @@ if (!getCookie('firsttime')){
     //Runs the code because the cookie doesn't exist and it's the user's first time
     document.querySelector('.sign-in').style.display = 'block'
     document.querySelector('body').style.overflow = 'hidden'
+    document.querySelector('html').style.overflow = 'hidden'
     //Set's the cookie to true so there is a value and the code shouldn't run again.
     setCookie('firsttime',true);
 }
@@ -35,20 +36,19 @@ var firebaseui = require('firebaseui');
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "apiKey",
-    authDomain: "authDomain",
-    databaseURL: "databaseURL",
-    projectId: "projectId",
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    projectId: "to-do-app-3967f",
     storageBucket: "",
-    messagingSenderId: "messagingSenderId",
-    appId: "appId"
+    messagingSenderId: "278704978997",
+    appId: process.env.APP_ID
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 // Authentication
 let database = firebase.database();
-console.log(firebase)
 
 async function callGoogleSignIn(e) {
     if (e.target.closest('.google-button')){
@@ -64,8 +64,11 @@ async function callGoogleSignIn(e) {
             writeUserData(user.uid,user.displayName)
             document.querySelector('.sign-in').style.display = 'none'
             document.querySelector('body').style.overflow = 'initial'
+            document.querySelector('html').style.overflow = 'initial'
             document.querySelector('.google-button__nav').style.display = 'none'
+            location.reload(true)
         }).catch(function (error) {
+            console.log(error);
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -85,6 +88,7 @@ document.addEventListener('click', callGoogleSignIn)
 chaneHeadingNav(localStorage.getItem('userName'))
 // Check if there is user
 firebase.auth().onAuthStateChanged(function(user) {
+    console.log('User State Changed')
     if (user) {
       // User is signed in.
       localStorage.setItem('user',JSON.stringify(user))
@@ -97,7 +101,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             database.ref('users/' + user.uid + '/main').on('value', (el) => {
                 if (el.exists()){
                     objectArr = el.val()
-                    console.log(objectArr)
                     let listsFire = objectArr.lists || false
                     let categoriesFire = objectArr.categories || false
 
@@ -110,10 +113,11 @@ firebase.auth().onAuthStateChanged(function(user) {
                 }
 
                 
-                showIteamsFromLocalStorage()
 
           })
       
+          // show lists & projects
+          showIteamsFromLocalStorage()
         // save the curernt category
           document.querySelectorAll('.nav__projects--item').forEach(el => {
             if (el.classList.contains('nav__projects--item--active')){
@@ -127,7 +131,8 @@ firebase.auth().onAuthStateChanged(function(user) {
           window.fitText(document.querySelector(elements.navHeadingPrimary), 0.6)
     }
 
-
+    state.category.categories = JSON.parse(localStorage.getItem('categories'))
+    state.lists.lists = JSON.parse(localStorage.getItem('lists'))
 
     } else {
       // No user is signed in.
@@ -137,18 +142,19 @@ firebase.auth().onAuthStateChanged(function(user) {
       state.lists.lists = JSON.parse(localStorage.getItem('lists')) || []
       chaneHeadingNav('Guest')
       console.log('THERE IS NO USER')
-              // save the curernt category
-              document.querySelectorAll('.nav__projects--item').forEach(el => {
-                if (el.classList.contains('nav__projects--item--active')){
-                    el.classList.remove('nav__projects--item--active')
-                }
-            })
-            document.querySelector(`[data-id="${localStorage.getItem('currentCategory')}"]`).classList.add('nav__projects--item--active')
     
     // Sign in button
     document.querySelector('.google-button__nav').style.display = 'block'
-    // show lists & projects
-    showIteamsFromLocalStorage()
+          // show lists & projects
+          showIteamsFromLocalStorage()
+        // save the curernt category
+          document.querySelectorAll('.nav__projects--item').forEach(el => {
+            if (el.classList.contains('nav__projects--item--active')){
+                el.classList.remove('nav__projects--item--active')
+            }
+        })
+        document.querySelector(`[data-id="${localStorage.getItem('currentCategory')}"]`).classList.add('nav__projects--item--active')
+    
 
     }
 
@@ -209,11 +215,34 @@ function openProjectInput(e) {
 
     }
 }
+function showIteamsFromLocalStorage() {
+    // LocalStorage
+    if (localStorage.getItem('categories')){
+        if (localStorage.getItem('categories') !== 'false'){
+         JSON.parse(localStorage.getItem('categories')).forEach(el => {
+             categoryView.showCategory(el.name,el.id)
+         })
+            state.category.categories = JSON.parse(localStorage.getItem('categories'))
+    
+      }
+    
+}
+
+    if (localStorage.getItem('lists')){
+        if (localStorage.getItem('lists') !== 'false'){
+            JSON.parse(localStorage.getItem('lists')).forEach(el => {
+                listView.showList(el.name,el.completed,el.id,localStorage.getItem('currentCategory'),el.categoryID,el.comment)
+            })
+            state.lists.lists = JSON.parse(localStorage.getItem('lists'))
+        }
+    }
+
+
+}
 
 function addProjectItem() {
     state.category.addCategory(this.value,database.ref('users/' + userId + '/main/categories'), userId)
     categoryView.showCategory(this.value, state.category.categories[state.category.categories.length-1].id)
-    console.log(state)
     this.value = ''
     addProjectInput.style.display = 'none'
 }
@@ -241,7 +270,6 @@ function addList(e) {
             state.lists.addList(document.querySelector(elements.addTodoInput).value, document.querySelector(elements.addTodoSelect).value, database.ref('users/' + userId + '/main/lists'), userId)
             listView.showList(document.querySelector(elements.addTodoInput).value, state.lists.lists[state.lists.lists.length - 1].completed, state.lists.lists[state.lists.lists.length - 1].id,localStorage.getItem('currentCategory'), state.lists.lists[state.lists.lists.length - 1].categoryID, state.lists.lists[state.lists.lists.length - 1].comment)
             document.querySelector(elements.addTodoInput).value = ''
-            console.log(state.lists)
             document.querySelector(elements.addTodoMenu).style.display = 'none'
 
         }
@@ -268,7 +296,6 @@ function selectedCategory(e) {
 function completedList(e) {
     if (e.target.closest('span')){
         state.lists.lists.forEach(el => {
-            // console.log('dfdfdff')
             if (el.id === e.target.parentNode.dataset.id){
                 el.completed = el.completed==='completed' ? 'uncompleted' : 'completed'
                 listView.showList(el.name, el.completed, el.id,localStorage.getItem('currentCategory'), el.categoryID, el.comment)
@@ -286,7 +313,10 @@ function completedList(e) {
             }
         })
 
-        database.ref('users/' + userId + '/main/lists').set(JSON.parse(localStorage.getItem('lists')))
+        if (userId){
+            database.ref('users/' + userId + '/main/lists').set(JSON.parse(localStorage.getItem('lists')))
+
+        }
 
     }
 }
@@ -345,7 +375,9 @@ function moreClicked(e) {
             }
 
         })
-        database.ref('users/' + userId + '/main/lists').set(JSON.parse(localStorage.getItem('lists')))
+        if (userId){
+            database.ref('users/' + userId + '/main/lists').set(JSON.parse(localStorage.getItem('lists')))
+        }
         document.querySelector(elements.moreAddCommentInput).value = ''
         document.querySelector(elements.moreList).style.display = 'none';  
 
@@ -373,7 +405,9 @@ function moveListTo(e) {
                 localStorage.setItem('lists',JSON.stringify(parsedList))
             }
         })
-        database.ref('users/' + userId + '/main/lists').set(JSON.parse(localStorage.getItem('lists')))
+        if (userId){
+            database.ref('users/' + userId + '/main/lists').set(JSON.parse(localStorage.getItem('lists')))
+        }
     }
 
 }
@@ -426,7 +460,6 @@ function deleteProject(e) {
                 
             }
         })
-        // console.log(state.lists.lists)
         // loop over the categories and delete it
         state.category.categories.forEach(el => {
             if (el.id === id ){
@@ -434,7 +467,7 @@ function deleteProject(e) {
                     document.querySelector('.nav__projects--item--main').classList.add('nav__projects--item--active')
                     currentCategory = 'main'
                     localStorage.setItem('currentCategory', currentCategory)
-                    categoryView.showRelatedLists(currentCategory,state.lists.lists)
+                    categoryView.showRelatedLists(localStorage.getItem('currentCategory'),state.lists.lists)
             
                 } 
                 state.category.removeCategory(el.id,database.ref('users/' + userId + '/main/categories'), userId)
@@ -454,31 +487,9 @@ function userFirstTime(e) {
     if (e.target.closest('.sign-in__link')){
         document.querySelector('.sign-in').style.display = 'none'
         document.querySelector('body').style.overflow = 'initial'
+        document.querySelector('html').style.overflow = 'initial'
 
     }
-}
-
-function showIteamsFromLocalStorage() {
-    // LocalStorage
-    if (localStorage.getItem('categories')){
-        if (localStorage.getItem('categories') !== 'false'){
-         JSON.parse(localStorage.getItem('categories')).forEach(el => {
-             categoryView.showCategory(el.name,el.id)
-         })
-            state.category.categories = JSON.parse(localStorage.getItem('categories'))
-    
-      }
-    
-}
-
-if (localStorage.getItem('lists') !== 'false'){
-    JSON.parse(localStorage.getItem('lists')).forEach(el => {
-        listView.showList(el.name,el.completed,el.id,localStorage.getItem('currentCategory'),el.categoryID,el.comment)
-    })
-    state.lists.lists = JSON.parse(localStorage.getItem('lists'))
-}
-
-
 }
 
 
@@ -531,6 +542,7 @@ function userSignOut(e) {
     })
 
     JSON.parse(localStorage.getItem('categories')).forEach(el => {
+       categoryView.removeCategoryFromSelect(el.id)
         
         Array.from(parentProjects.children).forEach(els => {
             if (els.dataset.id == el.id){
@@ -545,4 +557,5 @@ function userSignOut(e) {
     currentCategory = localStorage.getItem('currentCategory')
 
 
+    location.reload(true)
 }
