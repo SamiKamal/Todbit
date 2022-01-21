@@ -21,3 +21,10 @@ The projects uses 3 environment variables, create `.env` file in the root with t
 `AUTH_DOMAIN`: From Firebase Domain <br/>
 `DATABASE_URL`: From Firebase Database <br/>
 `APP_ID`: From Firebase <br/>
+
+## Tools ⚒️
+Vanilla Javascript, Firebase, Google Cloud Integration.
+
+## Demo 🎥
+https://user-images.githubusercontent.com/40594075/150551003-43d23801-f6dd-43b4-9b81-f295719a878d.mp4
+
