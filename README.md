@@ -2,7 +2,7 @@
 a Todo app to manage your tasks and projects
 
 ## Features 💪
-- User can add and delete tasks,
+- User can add and delete tasks.
 - User can add and delete projects.
 - User can assign and move tasks to projects.
 - User can add comments to tasks.
