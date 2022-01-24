@@ -1,5 +1,5 @@
-# Todo Website 📝
-a Todo app to manage your tasks and projects
+# Todbit 📝
+A website to orgnize your projects and tasks.
 
 ## Features 💪
 - User can add and delete tasks.
